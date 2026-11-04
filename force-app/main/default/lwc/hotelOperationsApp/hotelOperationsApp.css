@@ -1,0 +1,67 @@
+.shell {
+  min-height: 100vh;
+  background: #f4f6fa;
+  color: #183452;
+  font-family: Arial;
+}
+header {
+  background: #fff;
+  padding: 22px 30px;
+  border-bottom: 1px solid #e5eaf0;
+}
+header b {
+  font: 22px Georgia;
+  letter-spacing: 2px;
+}
+header span {
+  margin-left: 14px;
+  color: #a48752;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.layout {
+  display: flex;
+  min-height: 90vh;
+}
+nav {
+  width: 180px;
+  background: #173452;
+  padding: 25px 12px;
+}
+nav button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 5px 0;
+  padding: 13px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #eaf0f6;
+  cursor: pointer;
+}
+nav button:hover {
+  background: #315575;
+}
+main {
+  padding: 26px;
+  flex: 1;
+  min-width: 0;
+}
+@media (max-width: 650px) {
+  .layout {
+    display: block;
+  }
+  nav {
+    width: auto;
+    display: flex;
+    overflow: auto;
+    padding: 8px;
+  }
+  nav button {
+    white-space: nowrap;
+  }
+  main {
+    padding: 14px;
+  }
+}

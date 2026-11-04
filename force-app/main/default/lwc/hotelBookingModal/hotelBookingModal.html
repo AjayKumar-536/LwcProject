@@ -1,0 +1,19 @@
+<template>
+    <div class="shade">
+        <section class="modal" role="dialog" aria-modal="true">
+            <header>
+                <h2>New Booking</h2><button onclick={close}>X</button>
+            </header>
+            <div class="form"><label>Guest name<input data-name="guest" value={guest}
+                        oninput={change} /></label><label>Room number<input data-name="room" value={room}
+                        oninput={change} /></label><label>Check-in<input type="date" data-name="checkIn" value={checkIn}
+                        oninput={change} /></label><label>Check-out<input type="date" data-name="checkOut"
+                        value={checkOut} oninput={change} /></label><label class="wide">Total amount<input type="number"
+                        data-name="amount" value={amount} oninput={change} /></label></div><template lwc:if={error}>
+                <p class="error">{error}</p>
+            </template>
+            <footer><button onclick={close}>Cancel</button><button class="save" onclick={save}>Create booking</button>
+            </footer>
+        </section>
+    </div>
+</template>

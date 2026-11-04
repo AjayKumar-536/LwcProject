@@ -1,0 +1,27 @@
+<template>
+    <div class="heading"><small>RESERVATION CENTER</small>
+        <h1>Bookings</h1>
+        <p>Search, filter, sort and page through reservations.</p>
+    </div>
+    <div class="tools"><input placeholder="Search booking, guest or room" value={term} oninput={search} /><select
+            onchange={statusChange}>
+            <option>All</option>
+            <option>Confirmed</option>
+            <option>Checked In</option>
+            <option>Pending</option>
+            <option>Cancelled</option>
+        </select><select onchange={sortChange}>
+            <option value="newest">Newest</option>
+            <option value="amount">Amount high-low</option>
+            <option value="guest">Guest A-Z</option>
+        </select><button onclick={create}>New Booking</button></div>
+    <div class="table"><template for:each={pageRows} for:item="b">
+            <div key={b.id} class="row"><b>{b.id}</b><span>{b.guest}</span><span>Room {b.room}</span><span>{b.checkIn}
+                    ‚{b.checkOut}</span><strong>‚{b.amount}</strong><em>{b.status}</em></div>
+        </template><template lwc:if={empty}>
+            <p>No matching bookings.</p>
+        </template>
+        <footer>Showing {start}‚ {end} of {filtered.length}<button onclick={prev} disabled={first}>Previous</button>
+            {page}/{pages} <button onclick={next} disabled={last}>Next</button></footer>
+    </div>
+</template>

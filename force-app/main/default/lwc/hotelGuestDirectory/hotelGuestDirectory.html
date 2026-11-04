@@ -1,0 +1,14 @@
+<template>
+    <div class="heading"><small>RELATIONSHIP MANAGEMENT</small>
+        <h1>Guest Directory</h1>
+        <p>Guest profiles and loyalty levels.</p>
+    </div><input class="search" placeholder="Search guest, email or phone..." value={term} oninput={search} />
+    <div class="grid"><template for:each={results} for:item="g">
+            <article key={g.id}>
+                <div class="avatar">{g.initials}</div><span class={g.tierCss}>{g.tier}</span>
+                <h2>{g.name}</h2>
+                <p>{g.email}</p>
+                <p>{g.phone}</p><small>Previous stays: {g.visits}</small>
+            </article>
+        </template></div>
+</template>
