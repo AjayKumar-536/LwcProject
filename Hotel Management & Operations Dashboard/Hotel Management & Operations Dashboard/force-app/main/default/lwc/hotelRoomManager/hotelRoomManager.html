@@ -8,9 +8,9 @@
     <div class="grid"><template for:each={visibleRooms} for:item="r">
             <article key={r.id}>
                 <div class="top">ROOM {r.number}<span class={r.statusCss}>{r.status}</span></div>
-                <div class="art">‚åÇ</div>
+                <div class="art">Art</div>
                 <h2>{r.type}</h2>
-                <p>Floor {r.floor} ¬∑ {r.capacity} guests</p><b>‚Çπ{r.price} <small>/ night</small></b>
+                <p>Floor {r.floor} {r.capacity} guests</p><b>{r.price} <small>/ night</small></b>
             </article>
         </template></div>
 </template>
