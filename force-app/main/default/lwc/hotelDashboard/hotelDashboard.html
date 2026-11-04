@@ -1,7 +1,7 @@
 <template>
   <div class="heading">
     <small>PROPERTY OVERVIEW</small>
-    <h1>Welcome to Sheraton‚All</h1>
+    <h1>Welcome to Sheraton Hotel</h1>
     <p>Your hotel at a glance.</p>
   </div>
   <div class="stats">
@@ -35,7 +35,7 @@
     <h2>Recent Bookings</h2>
     <template for:each={bookings} for:item="b">
       <div key={b.id} class="row">
-        <b>{b.id}</b><span>{b.guest}</span><span>Room {b.room}</span><strong>‚{b.amount}</strong><em>{b.status}</em>
+        <b>{b.id}</b><span>{b.guest}</span><span>Room {b.room}</span><strong>{b.amount}</strong><em>{b.status}</em>
       </div>
     </template>
   </section>
