@@ -1,0 +1,92 @@
+<template>
+    <section class="explorer">
+        <header class="hero">
+            <p class="eyebrow">WORLD DATA ‚Ä¢ EXPLORE</p>
+            <h1>Country Explorer</h1>
+            <p>Search countries, compare regions, and explore quick facts.</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-wrap">
+                <label for="country-search">Search countries</label>
+                <input
+                    id="country-search"
+                    type="search"
+                    placeholder="Search country or capital..."
+                    value={searchTerm}
+                    oninput={handleSearch}
+                />
+            </div>
+
+            <div class="control-field">
+                <label for="region-filter">Region</label>
+                <select id="region-filter" value={selectedRegion} onchange={handleRegionChange}>
+                    <template for:each={regions} for:item="region">
+                        <option key={region} value={region}>{region}</option>
+                    </template>
+                </select>
+            </div>
+
+            <div class="control-field">
+                <label for="sort-order">Sort by population</label>
+                <select id="sort-order" value={sortOrder} onchange={handleSortChange}>
+                    <option value="largest">Largest first</option>
+                    <option value="smallest">Smallest first</option>
+                    <option value="name">Country name</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="summary-row">
+            <span><strong>{filteredCount}</strong> countries shown</span>
+            <button class="reset-button" onclick={resetFilters}>Reset filters</button>
+        </div>
+
+        <template if:true={hasCountries}>
+            <div class="country-grid">
+                <template for:each={visibleCountries} for:item="country">
+                    <button
+                        key={country.code}
+                        class={country.cardClass}
+                        data-code={country.code}
+                        onclick={selectCountry}>
+                        <div class="flag-wrap">
+                            <img src={country.flagUrl} alt={country.flagAlt} loading="lazy" />
+                        </div>
+                        <div class="country-content">
+                            <h2>{country.name}</h2>
+                            <p class="capital">{country.capital}</p>
+                            <div class="facts">
+                                <span><small>Region</small>{country.region}</span>
+                                <span><small>Population</small>{country.populationLabel}</span>
+                            </div>
+                        </div>
+                    </button>
+                </template>
+            </div>
+        </template>
+        <template if:false={hasCountries}>
+            <div class="empty-state">
+                <h2>No countries found</h2>
+                <p>Try another search term or region.</p>
+            </div>
+        </template>
+
+        <template if:true={hasSelectedCountry}>
+            <section class="detail-panel" aria-live="polite">
+                <button class="detail-close" onclick={clearSelection} aria-label="Close country details">√ó</button>
+                <img class="detail-flag" src={selectedCountry.flagUrl} alt={selectedCountry.flagAlt} />
+                <div class="detail-copy">
+                    <p class="eyebrow">COUNTRY DETAILS</p>
+                    <h2>{selectedCountry.name}</h2>
+                    <p><strong>Capital:</strong> {selectedCountry.capital}</p>
+                    <p><strong>Region:</strong> {selectedCountry.region}</p>
+                    <p><strong>Population:</strong> {selectedCountry.populationLabel}</p>
+                    <p><strong>Currency:</strong> {selectedCountry.currency}</p>
+                    <p><strong>Languages:</strong> {selectedCountry.languages}</p>
+                </div>
+            </section>
+        </template>
+        <p class="footnote">Demo data only. Population figures are approximate sample values.</p>
+    </section>
+</template>

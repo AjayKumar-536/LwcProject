@@ -1,0 +1,40 @@
+<template>
+    <lightning-card
+        title="Lightning Confirm Demo"
+        icon-name="utility:check">
+
+        <div class="slds-p-around_medium">
+
+            <p class="slds-m-bottom_medium">
+                Choose an action to see the confirmation popup.
+            </p>
+
+            <div class="button-container">
+
+                <lightning-button
+                    label="Delete Student"
+                    variant="destructive"
+                    onclick={handleDelete}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Reset Form"
+                    variant="brand"
+                    onclick={handleReset}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Cancel Operation"
+                    variant="neutral"
+                    onclick={handleCancel}>
+                </lightning-button>
+
+            </div>
+
+            <div class="slds-m-top_medium">
+                <p>{statusMessage}</p>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

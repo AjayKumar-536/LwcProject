@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title="Book Finder" icon-name="standard:product">
+        <div class="slds-var-p-horizontal_medium">
+            <!-- Search box: fires handleSearchChange on every keystroke (debounced in JS) -->
+            <lightning-input
+                type="search"
+                label="Search books"
+                placeholder="Search by title, author, subject..."
+                value={searchKey}
+                onchange={handleSearchChange}>
+            </lightning-input>
+        </div>
+
+        <div class="slds-var-p-around_medium">
+            <template lwc:if={isLoading}>
+                <lightning-spinner alternative-text="Loading books" size="medium"></lightning-spinner>
+            </template>
+
+            <template lwc:if={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+
+            <template lwc:if={hasBooks}>
+                <lightning-layout multiple-rows="true">
+                    <template for:each={books} for:item="book">
+                        <lightning-layout-item
+                            key={book.id}
+                            size="12"
+                            small-device-size="6"
+                            medium-device-size="4"
+                            large-device-size="3"
+                            padding="around-small">
+                            <lightning-card>
+                                <div class="slds-text-align_center slds-var-p-around_small">
+                                    <img
+                                        src={book.thumbnail}
+                                        alt={book.title}
+                                        class="book-image" />
+                                    <p class="slds-text-heading_small slds-var-m-top_small book-title">
+                                        <strong>{book.title}</strong>
+                                    </p>
+                                    <p class="slds-text-body_small">Published: {book.publishedDate}</p>
+                                    <p class="slds-text-body_small">Rating: {book.averageRating}</p>
+                                </div>
+                            </lightning-card>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+
+            <template lwc:if={showNoResults}>
+                <p>No books found. Try a different search.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

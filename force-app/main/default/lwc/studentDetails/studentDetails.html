@@ -1,0 +1,134 @@
+
+<template>
+    <div class="student-container">
+        <header class="page-header">
+            <h1>Student Details Management</h1>
+            <p>Register, search, and manage student records</p>
+        </header>
+
+        <section class="form-card">
+            <h2>Add Student</h2>
+
+            <div class="form-grid">
+                <lightning-input
+                    label="Student Name"
+                    name="name"
+                    value={studentName}
+                    onchange={handleInputChange}
+                    required>
+                </lightning-input>
+
+                <lightning-input
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    value={studentEmail}
+                    onchange={handleInputChange}
+                    required>
+                </lightning-input>
+
+                <lightning-input
+                    label="Mobile Number"
+                    name="mobile"
+                    type="tel"
+                    value={studentMobile}
+                    onchange={handleInputChange}
+                    required>
+                </lightning-input>
+
+                <lightning-combobox
+                    label="Course"
+                    name="course"
+                    value={studentCourse}
+                    options={courseOptions}
+                    onchange={handleInputChange}
+                    placeholder="Select a course"
+                    required>
+                </lightning-combobox>
+            </div>
+
+            <div class="form-actions">
+                <lightning-button
+                    label="Add Student"
+                    variant="brand"
+                    onclick={addStudent}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Clear Form"
+                    onclick={clearForm}>
+                </lightning-button>
+            </div>
+        </section>
+
+        <section class="stats-card">
+            <div>
+                <p>Total Students</p>
+                <h2>{totalStudents}</h2>
+            </div>
+        </section>
+
+        <section class="records-card">
+            <div class="records-header">
+                <h2>Student Records</h2>
+
+                <div class="search-box">
+                    <lightning-input
+                        type="search"
+                        label="Search Students"
+                        placeholder="Search name, ID, email, or course"
+                        value={searchTerm}
+                        onchange={handleSearch}>
+                    </lightning-input>
+                </div>
+            </div>
+
+            <template lwc:if={hasStudents}>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Course</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <template
+                                for:each={filteredStudents}
+                                for:item="student">
+                                <tr key={student.id}>
+                                    <td>{student.studentId}</td>
+                                    <td>{student.name}</td>
+                                    <td>{student.email}</td>
+                                    <td>{student.mobile}</td>
+                                    <td>{student.course}</td>
+                                    <td>
+                                        <lightning-button-icon
+                                            icon-name="utility:delete"
+                                            alternative-text="Delete student"
+                                            title="Delete student"
+                                            variant="bare"
+                                            data-id={student.id}
+                                            onclick={deleteStudent}>
+                                        </lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+
+            <template lwc:else>
+                <div class="empty-state">
+                    <p>{emptyMessage}</p>
+                </div>
+            </template>
+        </section>
+    </div>
+</template>

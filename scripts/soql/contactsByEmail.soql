@@ -1,0 +1,5 @@
+SELECT Id, Name, Email, Phone
+FROM Contact
+WHERE Email LIKE '%gmail.com'
+ORDER BY Name ASC
+LIMIT 50

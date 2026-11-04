@@ -1,0 +1,56 @@
+<template>
+    <lightning-quick-action-panel
+        header="Create Customer Follow-up">
+
+        <div class="form-container">
+            <div class="record-info">
+                <lightning-icon
+                    icon-name="standard:contact"
+                    size="small">
+                </lightning-icon>
+
+                <div>
+                    <p class="record-label">Current Record ID</p>
+                    <p class="record-id">{recordId}</p>
+                </div>
+            </div>
+
+            <lightning-input
+                label="Customer Name"
+                value={customerName}
+                onchange={handleNameChange}
+                required>
+            </lightning-input>
+
+            <lightning-combobox
+                label="Follow-up Type"
+                value={followUpType}
+                options={followUpOptions}
+                onchange={handleTypeChange}
+                required>
+            </lightning-combobox>
+
+            <lightning-textarea
+                label="Follow-up Notes"
+                value={notes}
+                onchange={handleNotesChange}
+                placeholder="Enter follow-up details..."
+                required>
+            </lightning-textarea>
+        </div>
+
+        <div slot="footer">
+            <lightning-button
+                label="Cancel"
+                onclick={handleCancel}>
+            </lightning-button>
+
+            <lightning-button
+                class="save-button"
+                label="Submit Follow-up"
+                variant="brand"
+                onclick={handleSubmit}>
+            </lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

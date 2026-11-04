@@ -1,0 +1,18 @@
+<template>
+    <lightning-card>
+        <div>Hello {fname} {lname}!</div>
+        <div>
+            <lightning-input name="firstname" label="Enter First Name" value="Ajay" class="querySelectorAll" onchange={handleChange}>
+            </lightning-input>
+        </div>
+        <div>
+            <lightning-input name="lastname" label="Enter Last Name" value="Sakhapuram" class="querySelectorAll" onchange={handleChange}>
+            </lightning-input>
+        </div>
+        <div>    
+            <lightning-button label="Click Here" onclick={handleClick}></lightning-button>
+        </div>
+    </lightning-card>
+    
+</template>
+

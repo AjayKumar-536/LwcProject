@@ -1,0 +1,90 @@
+
+<template>
+    <div style="padding: 20px; background: #f4f7fb; border-radius: 12px;">
+        <h1 style="font-size: 28px; font-weight: bold; color: #16325c;">
+            🌍 Country Explorer
+        </h1>
+        <p style="margin: 8px 0 20px;">
+            Explore countries, flags, populations and currencies.
+        </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+            <input
+                type="search"
+                placeholder="Search country or capital..."
+                value={searchKey}
+                oninput={handleSearch}
+                style="padding: 10px; border: 1px solid #c9c9c9; border-radius: 6px; flex: 1; min-width: 180px;"
+            />
+
+            <select
+                onchange={handleRegion}
+                style="padding: 10px; border: 1px solid #c9c9c9; border-radius: 6px;"
+            >
+                <option value="All">All Regions</option>
+                <option value="Africa">Africa</option>
+                <option value="Americas">Americas</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Oceania">Oceania</option>
+            </select>
+
+            <select
+                onchange={handleSort}
+                style="padding: 10px; border: 1px solid #c9c9c9; border-radius: 6px;"
+            >
+                <option value="asc">Name: A–Z</option>
+                <option value="desc">Name: Z–A</option>
+                <option value="population">Population: High–Low</option>
+            </select>
+        </div>
+
+        <p style="font-weight: bold; margin-bottom: 16px;">
+            Countries found: {countryCount}
+        </p>
+
+        <template lwc:if={isLoading}>
+            <p>Loading countries...</p>
+        </template>
+
+        <template lwc:if={errorMessage}>
+            <p style="color: #ba0517;">{errorMessage}</p>
+            <button onclick={loadCountries}
+                style="padding: 8px 16px; cursor: pointer;">
+                Retry
+            </button>
+        </template>
+
+        <template lwc:if={hasCountries}>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+                <template for:each={visibleCountries} for:item="country">
+                    <article
+                        key={country.code}
+                        style="background: white; border-radius: 10px; padding: 16px; border: 1px solid #e1e5ee; box-shadow: 0 2px 6px #0000000d;"
+                    >
+                        <img
+                            src={country.flag}
+                            alt={country.flagAlt}
+                            style="width: 90px; height: 55px; object-fit: contain; margin-bottom: 10px;"
+                        />
+
+                        <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+                            {country.name}
+                        </h2>
+
+                        <p><strong>Capital:</strong> {country.capital}</p>
+                        <p><strong>Region:</strong> {country.region}</p>
+                        <p><strong>Population:</strong> {country.populationLabel}</p>
+                        <p><strong>Currency:</strong> {country.currency}</p>
+                    </article>
+                </template>
+            </div>
+        </template>
+
+        <template lwc:if={showEmpty}>
+            <p style="padding: 20px; text-align: center;">
+                No countries match your search.
+            </p>
+        </template>
+    </div>
+</template>

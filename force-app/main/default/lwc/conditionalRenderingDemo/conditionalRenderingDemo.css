@@ -1,0 +1,35 @@
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.result-box {
+    padding: 16px;
+    border-radius: 8px;
+    background: #f3f3f3;
+}
+
+.success-message {
+    color: #2e844a;
+}
+
+.pending-message {
+    color: #8a6d00;
+}
+
+.error-message {
+    color: #ba0517;
+}
+
+.success-message,
+.pending-message,
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+p {
+    margin: 0;
+}

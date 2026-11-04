@@ -1,0 +1,79 @@
+<template>
+    <lightning-card
+        title="SOQL Builder"
+        icon-name="standard:database">
+
+        <div class="builder-container">
+
+            <div class="intro">
+                <h2>Build Your SOQL Query</h2>
+                <p>Select an object, choose fields, and generate a query.</p>
+            </div>
+
+            <lightning-combobox
+                name="object"
+                label="Select Object"
+                value={selectedObject}
+                options={objectOptions}
+                onchange={handleObjectChange}
+                required>
+            </lightning-combobox>
+
+            <div class="field-section">
+                <lightning-checkbox-group
+                    name="fields"
+                    label="Select Fields"
+                    options={fieldOptions}
+                    value={selectedFields}
+                    onchange={handleFieldsChange}>
+                </lightning-checkbox-group>
+            </div>
+
+            <lightning-input
+                type="number"
+                name="recordLimit"
+                label="Record Limit"
+                value={recordLimit}
+                min="1"
+                max="2000"
+                onchange={handleLimitChange}
+                required>
+            </lightning-input>
+
+            <div class="button-row">
+                <lightning-button
+                    label="Generate Query"
+                    variant="brand"
+                    icon-name="utility:code"
+                    onclick={handleGenerate}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Reset"
+                    icon-name="utility:refresh"
+                    onclick={handleReset}>
+                </lightning-button>
+            </div>
+
+            <template lwc:if={generatedQuery}>
+                <section class="query-section">
+                    <div class="query-heading">
+                        <lightning-icon
+                            icon-name="utility:code"
+                            size="small">
+                        </lightning-icon>
+                        <h2>Generated SOQL Query</h2>
+                    </div>
+
+                    <pre class="query-output">{generatedQuery}</pre>
+
+                    <p class="help-text">
+                        Copy this query into a .soql file or the
+                        Salesforce SOQL Builder in VS Code to run it.
+                    </p>
+                </section>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

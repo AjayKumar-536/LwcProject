@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle
+    xmlns="http://soap.sforce.com/2006/04/metadata">
+ 
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+ 
+    <masterLabel>Open Contact Subtab</masterLabel>
+    <description>Opens a specific Contact record in a Console subtab.</description>
+ 
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+</LightningComponentBundle>

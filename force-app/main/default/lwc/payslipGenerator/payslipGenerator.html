@@ -1,0 +1,82 @@
+<template>
+    <lightning-card title="Payslip PDF Generator" icon-name="doctype:pdf">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                label="Employee Name"
+                value={employeeName}
+                onchange={handleChange}
+                data-field="employeeName"
+                required>
+            </lightning-input>
+
+            <lightning-input
+                label="Employee ID"
+                value={employeeId}
+                onchange={handleChange}
+                data-field="employeeId"
+                required>
+            </lightning-input>
+
+            <lightning-input
+                label="Department"
+                value={department}
+                onchange={handleChange}
+                data-field="department">
+            </lightning-input>
+
+            <lightning-input
+                label="Basic Salary"
+                type="number"
+                min="0"
+                value={basicSalary}
+                onchange={handleChange}
+                data-field="basicSalary"
+                required>
+            </lightning-input>
+
+            <lightning-input
+                label="Allowances"
+                type="number"
+                min="0"
+                value={allowances}
+                onchange={handleChange}
+                data-field="allowances">
+            </lightning-input>
+
+            <lightning-input
+                label="Deductions"
+                type="number"
+                min="0"
+                value={deductions}
+                onchange={handleChange}
+                data-field="deductions">
+            </lightning-input>
+
+            <div class="summary slds-m-top_medium">
+                <p>Gross Salary: {grossSalaryDisplay}</p>
+                <p>Net Salary: {netSalaryDisplay}</p>
+            </div>
+
+            <lightning-button
+                class="slds-m-top_medium"
+                label="Generate PDF"
+                variant="brand"
+                onclick={generatePDF}
+                disabled={isLoading}>
+            </lightning-button>
+
+            <template lwc:if={isLoading}>
+                <lightning-spinner
+                    alternative-text="Preparing PDF"
+                    size="small">
+                </lightning-spinner>
+            </template>
+
+            <template lwc:if={errorMessage}>
+                <p class="slds-text-color_error slds-m-top_medium">
+                    {errorMessage}
+                </p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

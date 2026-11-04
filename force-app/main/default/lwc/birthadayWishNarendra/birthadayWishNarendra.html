@@ -1,0 +1,138 @@
+<template>
+    <div class="birthday-page">
+        <div class="balloon balloon-one">🎈</div>
+        <div class="balloon balloon-two">🎈</div>
+        <div class="balloon balloon-three">🎈</div>
+
+        <template for:each={confetti} for:item="piece">
+            <span key={piece.id}
+                  class={piece.className}
+                  style={piece.style}>✦</span>
+        </template>
+
+        <header class="hero">
+            <div class="eyebrow">A SPECIAL DAY FOR A SPECIAL LEADER</div>
+
+            <div class="portrait-frame">
+                <img src={managerPhoto}
+                     alt="Manager Narendra"
+                     class="manager-photo"/>
+                <span class="crown">👑</span>
+            </div>
+
+            <h1>Happy Birthday</h1>
+            <h2 class="manager-name">Narendra!</h2>
+
+            <p class="hero-message">
+                Wishing you endless happiness, good health,
+                success and beautiful moments.
+            </p>
+
+            <div class="teddy" aria-label="Birthday teddy bear">
+                🧸
+                <div class="teddy-message">Happy Birthday, Anna! 💝</div>
+            </div>
+
+            <div class="hero-actions">
+                <button class="gift-button"
+                        onclick={openGift}
+                        disabled={giftOpened}>
+                    🎁 {giftButtonLabel}
+                </button>
+            </div>
+
+            <p class="hint">
+                {hintMessage}
+            </p>
+        </header>
+
+        <template lwc:if={giftOpened}>
+            <section class="surprise-card">
+                <div class="section-kicker">✨ YOUR SPECIAL SURPRISE ✨</div>
+                <h2>A Message for You, Narendra Anna</h2>
+
+                <p class="letter">
+                    Dear Narendra Anna,<br/><br/>
+                    Wishing you a very Happy Birthday! 🎂
+                    Thank you for your guidance, encouragement,
+                    and the positive example you set for the team.
+                    May this year bring you great achievements,
+                    good health, happiness, and countless reasons
+                    to smile.<br/><br/>
+                    May you continue to inspire everyone around
+                    you and achieve new milestones in your journey.
+                    Have a wonderful birthday and an amazing year
+                    ahead! 🌟
+                </p>
+
+                <div class="quote-grid">
+                    <article class="quote">
+                        🌟 “May your leadership journey shine
+                        brighter with every passing year.”
+                    </article>
+                    <article class="quote">
+                        🎯 “Wishing you new achievements,
+                        exciting opportunities and success.”
+                    </article>
+                    <article class="quote">
+                        💐 “May good health, peace and happiness
+                        always accompany you.”
+                    </article>
+                    <article class="quote">
+                        ❤️ “Thank you for guiding, motivating
+                        and inspiring the team.”
+                    </article>
+                </div>
+
+                <div class="media-panel">
+                    <h3>🎬 Your Birthday Celebration</h3>
+                    <p>
+                        Add your 20–30 second birthday video
+                        and play it here.
+                    </p>
+
+                    <video class="birthday-video"
+                           controls
+                           playsinline
+                           preload="metadata"
+                           poster={managerPhoto}>
+                        <source src={birthdayVideo} type="video/mp4"/>
+                        Your browser does not support video.
+                    </video>
+
+                    <div class="media-actions">
+                        <button class="video-button"
+                                onclick={playVideo}>
+                            ▶ Play Video
+                        </button>
+                        <button class="audio-button"
+                                onclick={toggleAudio}>
+                            {audioButtonLabel}
+                        </button>
+                    </div>
+
+                    <audio class="birthday-audio"
+                           controls
+                           preload="metadata">
+                        <source src={birthdayAudio} type="audio/mpeg"/>
+                        Your browser does not support audio.
+                    </audio>
+                </div>
+
+                <div class="closing">
+                    <span>🎂</span>
+                    <h3>Keep Inspiring, Keep Shining!</h3>
+                    <p>With respect and best wishes, from your team.</p>
+                    <button class="replay-button"
+                            onclick={replayCelebration}>
+                        🎉 Celebrate Again
+                    </button>
+                </div>
+            </section>
+        </template>
+
+        <footer class="footer">
+            Made with ❤️ to celebrate an amazing manager
+        </footer>
+    </div>
+</template>

@@ -1,0 +1,5 @@
+SELECT Id, Name, BillingCity, BillingState
+FROM Account
+WHERE BillingCity = 'Nellore'
+ORDER BY Name ASC
+LIMIT 50

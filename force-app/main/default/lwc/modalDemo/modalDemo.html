@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Reusable Modal Component">
+        <div class="slds-p-around_medium">
+            <lightning-button label="Open modal" variant="brand" onclick={openModal}></lightning-button>
+            <template if:true={isModalOpen}>
+                <c-reusable-modal title-text="Learning Update" message-text="This popup is a reusable child component." onclose={closeModal}></c-reusable-modal>
+            </template>
+        </div>
+    </lightning-card>
+</template>

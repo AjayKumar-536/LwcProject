@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Payslip PDF Generator" icon-name="doctype:pdf">
+        <div class="page slds-p-around_medium">
+            <div class="hero">
+                <div>
+                    <p class="eyebrow">PAYROLL DOCUMENT</p>
+                    <h1>Payslip Generator</h1>
+                    <p class="subtext">Edit the details and generate a printable payslip PDF.</p>
+                </div>
+                <lightning-badge label="INR"></lightning-badge>
+            </div>
+
+            <div class="form-grid">
+                <lightning-input label="Payslip month" value={payPeriod} data-field="payPeriod" onchange={handleChange}></lightning-input>
+                <lightning-input label="Company name" value={companyName} data-field="companyName" onchange={handleChange}></lightning-input>
+                <lightning-input label="Employee name" value={employeeName} data-field="employeeName" onchange={handleChange}></lightning-input>
+                <lightning-input label="Employee number" value={employeeNumber} data-field="employeeNumber" onchange={handleChange}></lightning-input>
+                <lightning-input label="Date joined" value={dateJoined} data-field="dateJoined" onchange={handleChange}></lightning-input>
+                <lightning-input label="Designation" value={designation} data-field="designation" onchange={handleChange}></lightning-input>
+                <lightning-input label="Department" value={department} data-field="department" onchange={handleChange}></lightning-input>
+                <lightning-input label="Payment mode" value={paymentMode} data-field="paymentMode" onchange={handleChange}></lightning-input>
+                <lightning-input label="Bank name" value={bankName} data-field="bankName" onchange={handleChange}></lightning-input>
+                <lightning-input label="Bank account (optional)" value={accountNumber} data-field="accountNumber" onchange={handleChange}></lightning-input>
+                <lightning-input label="IFSC code (optional)" value={ifscCode} data-field="ifscCode" onchange={handleChange}></lightning-input>
+                <lightning-input label="Branch" value={branch} data-field="branch" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Basic pay (‚Çπ)" value={basicPay} data-field="basicPay" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="HRA (‚Çπ)" value={hra} data-field="hra" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Special allowance (‚Çπ)" value={specialAllowance} data-field="specialAllowance" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Employee PF (‚Çπ)" value={employeePf} data-field="employeePf" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Professional tax (‚Çπ)" value={professionalTax} data-field="professionalTax" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Working days" value={workingDays} data-field="workingDays" onchange={handleChange}></lightning-input>
+                <lightning-input type="number" label="Loss of pay days" value={lossOfPayDays} data-field="lossOfPayDays" onchange={handleChange}></lightning-input>
+            </div>
+
+            <div class="summary">
+                <div><span>Total earnings</span><strong>{formattedEarnings}</strong></div>
+                <div><span>Total deductions</span><strong>{formattedDeductions}</strong></div>
+                <div class="net"><span>Net salary payable</span><strong>{formattedNetSalary}</strong></div>
+            </div>
+
+            <div class="actions">
+                <lightning-button label="Generate PDF" variant="brand" icon-name="utility:download" onclick={generatePdf}></lightning-button>
+                <p class="hint">Upload a compatible jsPDF UMD build as a Salesforce Static Resource named <strong>jspdf</strong>.</p>
+            </div>
+            <template if:true={statusMessage}>
+                <div class="status" role="status">{statusMessage}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

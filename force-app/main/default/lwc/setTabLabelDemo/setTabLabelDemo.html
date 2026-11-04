@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Set Workspace Tab Icon">
+        <div class="slds-p-around_medium">
+            <lightning-button
+                label="Set Tab Icon"
+                variant="brand"
+                onclick={handleSetIcon}>
+            </lightning-button>
+ 
+            <template lwc:if={message}>
+                <p class="slds-m-top_medium">{message}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
+ 

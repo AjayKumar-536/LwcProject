@@ -1,0 +1,137 @@
+<apex:page
+    controller="PayslipController"
+    renderAs="pdf"
+    showHeader="false"
+    sidebar="false"
+    applyHtmlTag="false"
+    applyBodyTag="false">
+
+<html>
+<head>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            color: #174a7e;
+            font-size: 22px;
+        }
+
+        .details {
+            margin-top: 25px;
+            line-height: 2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #b8c4d1;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #e8f0fa;
+        }
+
+        .amount {
+            text-align: right;
+        }
+
+        .total {
+            font-weight: bold;
+            background-color: #eef7ee;
+        }
+
+        .footer {
+            margin-top: 35px;
+            text-align: center;
+            font-size: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>EMPLOYEE PAYSLIP</h1>
+
+    <div class="details">
+        <strong>Employee Name:</strong>
+        <apex:outputText value="{!employeeName}"/><br/>
+
+        <strong>Employee ID:</strong>
+        <apex:outputText value="{!employeeId}"/><br/>
+
+        <strong>Department:</strong>
+        <apex:outputText value="{!department}"/>
+    </div>
+
+    <table>
+        <tr>
+            <th>Salary Description</th>
+            <th class="amount">Amount (INR)</th>
+        </tr>
+
+        <tr>
+            <td>Basic Salary</td>
+            <td class="amount">
+                <apex:outputText value="{0,number,#,##0.00}">
+                    <apex:param value="{!basicSalary}"/>
+                </apex:outputText>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Allowances</td>
+            <td class="amount">
+                <apex:outputText value="{0,number,#,##0.00}">
+                    <apex:param value="{!allowances}"/>
+                </apex:outputText>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Gross Salary</td>
+            <td class="amount">
+                <apex:outputText value="{0,number,#,##0.00}">
+                    <apex:param value="{!grossSalary}"/>
+                </apex:outputText>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Deductions</td>
+            <td class="amount">
+                <apex:outputText value="{0,number,#,##0.00}">
+                    <apex:param value="{!deductions}"/>
+                </apex:outputText>
+            </td>
+        </tr>
+
+        <tr class="total">
+            <td>NET SALARY</td>
+            <td class="amount">
+                <apex:outputText value="{0,number,#,##0.00}">
+                    <apex:param value="{!netSalary}"/>
+                </apex:outputText>
+            </td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        Generated using Salesforce Visualforce PDF.
+    </div>
+</body>
+</html>
+</apex:page>

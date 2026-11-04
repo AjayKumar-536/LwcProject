@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Sorting in LWC">
+        <div class="slds-p-around_medium">
+            <lightning-button label="Sort A‚A-Z" onclick={sortAscending}></lightning-button>
+            <lightning-button class="slds-m-left_small" label="Sort Z‚Z-A" onclick={sortDescending}></lightning-button>
+            <template for:each={students} for:item="student">
+                <div key={student.id} class="slds-box slds-m-top_x-small">{student.name} ‚A1 {student.score}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

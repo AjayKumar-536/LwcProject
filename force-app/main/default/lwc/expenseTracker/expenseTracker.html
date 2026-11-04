@@ -1,0 +1,273 @@
+
+<template>
+    <div class="app">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">PERSONAL FINANCE</p>
+                <h1>Smart Expense Tracker</h1>
+                <p class="subtitle">Track your spending. Stay in control.</p>
+            </div>
+            <div class="hero-icon">₹</div>
+        </header>
+
+        <section class="summary-grid">
+            <article class="summary-card total-card">
+                <span class="summary-label">Total Expenses</span>
+                <h2>{formattedTotal}</h2>
+                <span class="summary-note">All saved transactions</span>
+            </article>
+
+            <article class="summary-card budget-card">
+                <span class="summary-label">Monthly Budget</span>
+                <h2>{formattedBudget}</h2>
+                <span class="summary-note">Your spending limit</span>
+            </article>
+
+            <article class="summary-card remaining-card">
+                <span class="summary-label">Budget Remaining</span>
+                <h2>{formattedRemaining}</h2>
+                <div class="progress-track">
+                    <div class="progress-fill" style={progressStyle}></div>
+                </div>
+                <span class="summary-note">{budgetMessage}</span>
+            </article>
+        </section>
+
+        <section class="main-grid">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">NEW TRANSACTION</p>
+                        <h2>Add an Expense</h2>
+                    </div>
+                    <span class="heading-icon">＋</span>
+                </div>
+
+                <form onsubmit={handleSubmit}>
+                    <div class="field">
+                        <label for="expense-name">Expense Name</label>
+                        <input
+                            id="expense-name"
+                            name="expenseName"
+                            type="text"
+                            placeholder="e.g. Grocery shopping"
+                            value={expenseName}
+                            oninput={handleNameChange}
+                            required
+                            maxlength="60"
+                        />
+                    </div>
+
+                    <div class="field">
+                        <label for="expense-amount">Amount (₹)</label>
+                        <input
+                            id="expense-amount"
+                            name="expenseAmount"
+                            type="number"
+                            placeholder="e.g. 500"
+                            min="0.01"
+                            step="0.01"
+                            value={expenseAmount}
+                            oninput={handleAmountChange}
+                            required
+                        />
+                    </div>
+
+                    <div class="field">
+                        <label for="expense-category">Category</label>
+                        <select
+                            id="expense-category"
+                            name="expenseCategory"
+                            value={expenseCategory}
+                            onchange={handleCategoryChange}
+                        >
+                            <template for:each={categoryOptions} for:item="option">
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            </template>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="expense-date">Date</label>
+                        <input
+                            id="expense-date"
+                            name="expenseDate"
+                            type="date"
+                            value={expenseDate}
+                            onchange={handleDateChange}
+                            required
+                        />
+                    </div>
+
+                    <div class="field">
+                        <label for="monthly-budget">Monthly Budget (₹)</label>
+                        <input
+                            id="monthly-budget"
+                            name="monthlyBudget"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            value={budgetInput}
+                            oninput={handleBudgetChange}
+                            required
+                        />
+                    </div>
+
+                    <button class="primary-button" type="submit">
+                        + Add Expense
+                    </button>
+                    <p class="form-message">{formMessage}</p>
+                </form>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">SPENDING OVERVIEW</p>
+                        <h2>By Category</h2>
+                    </div>
+                    <span class="heading-icon">◉</span>
+                </div>
+
+                <template lwc:if={hasCategorySpending}>
+                    <div class="category-list">
+                        <template
+                            for:each={categorySpending}
+                            for:item="item"
+                        >
+                            <div class="category-item" key={item.name}>
+                                <div class="category-top">
+                                    <span>{item.name}</span>
+                                    <strong>{item.formattedAmount}</strong>
+                                </div>
+                                <div class="progress-track category-track">
+                                    <div
+                                        class="category-fill"
+                                        style={item.barStyle}
+                                    ></div>
+                                </div>
+                                <p class="category-percent">{item.percent}% of all expenses</p>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class="empty-state">
+                        <span class="empty-icon">◌</span>
+                        <p>No spending to display yet.</p>
+                        <span>Add an expense to see your breakdown.</span>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <section class="panel transactions-panel">
+            <div class="panel-heading transactions-heading">
+                <div>
+                    <p class="eyebrow">YOUR RECORDS</p>
+                    <h2>Recent Transactions</h2>
+                </div>
+                <span class="count-badge">{transactionCount} records</span>
+            </div>
+
+            <div class="filters">
+                <div class="search-box">
+                    <label for="search-expenses">Search</label>
+                    <input
+                        id="search-expenses"
+                        type="search"
+                        placeholder="Search expenses..."
+                        value={searchTerm}
+                        oninput={handleSearchChange}
+                    />
+                </div>
+
+                <div class="filter-box">
+                    <label for="filter-category">Filter category</label>
+                    <select
+                        id="filter-category"
+                        value={filterCategory}
+                        onchange={handleFilterChange}
+                    >
+                        <option value="All">All categories</option>
+                        <template for:each={categoryOptions} for:item="option">
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+            </div>
+
+            <template lwc:if={hasTransactions}>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Expense</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th class="amount-cell">Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={filteredExpenses} for:item="item">
+                                <tr key={item.id}>
+                                    <td>
+                                        <div class="expense-name">
+                                            <span class={item.iconClass}>
+                                                {item.icon}
+                                            </span>
+                                            <strong>{item.name}</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="category-pill">{item.category}</span>
+                                    </td>
+                                    <td>{item.date}</td>
+                                    <td class="amount-cell">
+                                        <strong>{item.formattedAmount}</strong>
+                                    </td>
+                                    <td>
+                                        <button
+                                            class="delete-button"
+                                            type="button"
+                                            data-id={item.id}
+                                            onclick={handleDelete}
+                                            title="Delete expense"
+                                            aria-label="Delete expense"
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="empty-state">
+                    <span class="empty-icon">▤</span>
+                    <p>No matching expenses found.</p>
+                    <span>Add an expense or change your search filters.</span>
+                </div>
+            </template>
+
+            <footer class="panel-footer">
+                <span>Stored locally in this browser</span>
+                <button class="clear-button" type="button" onclick={handleClear}>
+                    Clear all expenses
+                </button>
+            </footer>
+        </section>
+
+        <p class="disclaimer">
+            Demo project: expenses stay in this browser and are not synced
+            to Salesforce or other devices.
+        </p>
+    </div>
+</template>

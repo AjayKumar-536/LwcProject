@@ -1,0 +1,129 @@
+<template>
+    <div class="birthday-page">
+        <div class="balloon balloon-one">🎈</div>
+        <div class="balloon balloon-two">🎈</div>
+        <div class="balloon balloon-three">🎈</div>
+
+        <template for:each={confetti} for:item="piece">
+            <span key={piece.id}
+                  class={piece.className}
+                  style={piece.style}>✦</span>
+        </template>
+
+        <header class="hero">
+            <div class="eyebrow">A SPECIAL DAY FOR A SPECIAL PERSON</div>
+
+            <div class="portrait-frame">
+                <img src={managerPhoto}
+                     alt="Manager Narendra"
+                     class="manager-photo"/>
+                <span class="crown">👑</span>
+            </div>
+
+            <h1>Happy Birthday</h1>
+            <h2 class="manager-name">Subhashini!</h2>
+
+            <p class="hero-message">
+                Wishing you endless happiness, good health,
+                success and beautiful moments.
+            </p>
+
+            <div class="teddy" aria-label="Birthday teddy bear">
+                🧸
+                <div class="teddy-message">Happy Birthday, Chellamma 💝</div>
+            </div>
+
+            <div class="hero-actions">
+                <button class="gift-button"
+                        onclick={openGift}
+                        disabled={giftOpened}>
+                    🎁 {giftButtonLabel}
+                </button>
+            </div>
+
+            <p class="hint">
+                {hintMessage}
+            </p>
+        </header>
+
+        <template lwc:if={giftOpened}>
+            <section class="surprise-card">
+                <div class="section-kicker">✨ YOUR SPECIAL SURPRISE ✨</div>
+                <h2>A Message for You, Narendra Sir</h2>
+
+                <p class="letter">
+                    Dear Chellamma,<br/><br/>
+                    Today, October 18, is such a special and beautiful day because the world was blessed with someone who means so much to me. 🥹🎂💐❤️✨ Happy Birthday, my dear sister, my favorite human, my happiness, and one of the most precious blessings life has ever given me! 🫂💗🌍🌈😘🫶🏻
+                    
+                </p>
+
+                <div class="quote-grid">
+                    <article class="quote">
+                        🌟 “YOU ARE MY SISTER BY HEART, AND I AM GENUINELY GRATEFUL THAT LIFE
+                         BROUGHT YOU INTO MY WORLD. 🫂❤️🥹🌍💖♾️ ”
+                    </article>
+                    <article class="quote">
+                        🎯 “Wishing you new achievements,
+                        exciting opportunities and success.”
+                    </article>
+                    <article class="quote">
+                        💐 “May good health, peace and happiness
+                        always accompany you.”
+                    </article>
+                    <article class="quote">
+                        ❤️ “😊💖 I WANT TO SEE YOU HAPPY — NOT JUST ON YOUR BIRTHDAY, BUT ON ORDINARY DAYS TOO. 🌻☀️🌈”
+                    </article>
+                </div>
+
+                <div class="media-panel">
+                    <h3>🎬 Your Birthday Celebration</h3>
+                    <p>
+                        Add your 20–30 second birthday video
+                        and play it here.
+                    </p>
+
+                    <video class="birthday-video"
+                           controls
+                           playsinline
+                           preload="metadata"
+                           poster={managerPhoto}>
+                        <source src={birthdayVideo} type="video/mp4"/>
+                        Your browser does not support video.
+                    </video>
+
+                    <div class="media-actions">
+                        <button class="video-button"
+                                onclick={playVideo}>
+                            ▶ Play Video
+                        </button>
+                        <button class="audio-button"
+                                onclick={toggleAudio}>
+                            {audioButtonLabel}
+                        </button>
+                    </div>
+
+                    <audio class="birthday-audio"
+                           controls
+                           preload="metadata">
+                        <source src={birthdayAudio} type="audio/mpeg"/>
+                        Your browser does not support audio.
+                    </audio>
+                </div>
+
+                <div class="closing">
+                    <span>🎂</span>
+                    <h3>Keep Inspiring, Keep Shining!</h3>
+                    <p>With respect and best wishes, from your team.</p>
+                    <button class="replay-button"
+                            onclick={replayCelebration}>
+                        🎉 Celebrate Again
+                    </button>
+                </div>
+            </section>
+        </template>
+
+        <footer class="footer">
+            Made with ❤️ to celebrate an amazing sister
+        </footer>
+    </div>
+</template>

@@ -1,0 +1,394 @@
+:host {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.birthday-page {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    padding: 32px 16px;
+    color: #fff;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at top, #6b21a8 0%, transparent 60%),
+        linear-gradient(145deg, #140b2d, #34105c 48%, #82165e);
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 18px 32px;
+    border: 1px solid rgb(255 255 255 / 25%);
+    border-radius: 28px;
+    background: rgb(255 255 255 / 8%);
+    box-shadow: 0 16px 55px rgb(0 0 0 / 25%);
+    backdrop-filter: blur(8px);
+    animation: fade-up 1s ease both;
+}
+
+.eyebrow,
+.section-kicker {
+    color: #ffd78b;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.portrait-frame {
+    position: relative;
+    width: 155px;
+    height: 155px;
+    margin: 22px auto 12px;
+    border: 5px solid #ffcf70;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgb(255 203 112 / 50%);
+    animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+.manager-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.crown {
+    position: absolute;
+    top: -25px;
+    right: -5px;
+    font-size: 36px;
+    animation: rock 2s ease-in-out infinite;
+}
+
+.hero h1 {
+    margin: 10px 0 0;
+    color: #fff1bb;
+    font-family: Georgia, serif;
+    font-size: clamp(36px, 7vw, 62px);
+    text-shadow: 0 0 24px rgb(255 215 120 / 40%);
+}
+
+.manager-name {
+    margin: 0;
+    color: #ff8cc9;
+    font-family: Georgia, serif;
+    font-size: clamp(36px, 8vw, 58px);
+    font-style: italic;
+}
+
+.hero-message {
+    max-width: 510px;
+    margin: 14px auto;
+    color: #f8eafa;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.teddy {
+    display: inline-block;
+    margin: 10px auto;
+    font-size: 78px;
+    animation: bounce 1.8s ease-in-out infinite;
+}
+
+.teddy-message {
+    margin-top: 4px;
+    color: #ffdf9b;
+    font-size: 15px;
+    font-weight: 700;
+    animation: fade-up 2s ease both;
+}
+
+.gift-button,
+.video-button,
+.audio-button,
+.replay-button {
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 24px;
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgb(0 0 0 / 22%);
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.gift-button {
+    margin-top: 14px;
+    background: linear-gradient(100deg, #f97316, #e11d85, #9333ea);
+    animation: pulse 2s infinite;
+}
+
+.gift-button:disabled {
+    cursor: default;
+    animation: none;
+    opacity: 0.85;
+}
+
+.video-button {
+    background: linear-gradient(100deg, #7c3aed, #4f46e5);
+}
+
+.audio-button {
+    background: linear-gradient(100deg, #db2777, #9333ea);
+}
+
+.replay-button {
+    background: linear-gradient(100deg, #e11d85, #9333ea);
+}
+
+.gift-button:hover,
+.video-button:hover,
+.audio-button:hover,
+.replay-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+}
+
+.hint {
+    color: #f3d6ff;
+    font-size: 13px;
+}
+
+.surprise-card {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 24px auto;
+    padding: 26px 20px;
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 24px;
+    color: #371044;
+    background: linear-gradient(140deg, #fff8ee, #ffe3f1);
+    box-shadow: 0 15px 50px rgb(0 0 0 / 25%);
+    animation: reveal 0.8s ease both;
+}
+
+.surprise-card h2 {
+    color: #7e22ce;
+    font-family: Georgia, serif;
+    font-size: clamp(25px, 5vw, 36px);
+}
+
+.letter {
+    max-width: 610px;
+    margin: 18px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgb(255 255 255 / 75%);
+    font-size: 16px;
+    line-height: 1.9;
+    text-align: left;
+    white-space: normal;
+}
+
+.quote-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.quote {
+    padding: 18px;
+    border: 1px solid #f4c8e5;
+    border-radius: 16px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: left;
+    animation: fade-up 0.8s ease both;
+}
+
+.media-panel {
+    padding: 20px 12px;
+    border-radius: 18px;
+    background: rgb(255 255 255 / 72%);
+}
+
+.media-panel h3 {
+    color: #701a75;
+    font-size: 22px;
+}
+
+.media-panel p {
+    line-height: 1.6;
+}
+
+.birthday-video {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    margin: 18px auto;
+    border: 4px solid white;
+    border-radius: 14px;
+    background: #170b2b;
+}
+
+.media-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.birthday-audio {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 14px auto;
+}
+
+.closing {
+    padding: 24px 10px 8px;
+}
+
+.closing > span {
+    display: inline-block;
+    font-size: 42px;
+    animation: rock 1.5s infinite;
+}
+
+.closing h3 {
+    color: #a21caf;
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.closing p {
+    line-height: 1.7;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 20px 8px;
+    color: #f7dff9;
+    font-size: 13px;
+}
+
+.balloon {
+    position: absolute;
+    z-index: 0;
+    font-size: 48px;
+    animation: float-up 8s ease-in-out infinite;
+}
+
+.balloon-one {
+    top: 8%;
+    left: 4%;
+}
+
+.balloon-two {
+    top: 35%;
+    right: 4%;
+    animation-delay: 2s;
+}
+
+.balloon-three {
+    top: 65%;
+    left: 7%;
+    animation-delay: 4s;
+}
+
+.confetti {
+    position: absolute;
+    z-index: 0;
+    top: -30px;
+    left: var(--left);
+    color: #ffd166;
+    pointer-events: none;
+    animation: confetti-fall var(--duration) linear var(--delay) infinite;
+}
+
+.confetti-1 { color: #f9a8d4; }
+.confetti-2 { color: #c4b5fd; }
+.confetti-3 { color: #67e8f9; }
+.confetti-4 { color: #fde68a; }
+.confetti-5 { color: #fb7185; }
+
+@keyframes float-up {
+    0%, 100% { transform: translateY(20px) rotate(-10deg); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(600deg); opacity: 0.7; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 15px rgb(255 203 112 / 35%); }
+    to { box-shadow: 0 0 35px rgb(255 203 112 / 80%); }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 22px rgb(0 0 0 / 22%); }
+    50% { box-shadow: 0 0 26px rgb(249 115 22 / 60%); }
+}
+
+@keyframes rock {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+}
+
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: scale(0.94) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (max-width: 520px) {
+    .birthday-page {
+        padding: 14px 8px;
+    }
+
+    .hero,
+    .surprise-card {
+        padding: 22px 12px;
+        border-radius: 20px;
+    }
+
+    .portrait-frame {
+        width: 125px;
+        height: 125px;
+    }
+
+    .quote-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .letter {
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    .balloon {
+        font-size: 32px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .birthday-page *,
+    .birthday-page *::before,
+    .birthday-page *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+

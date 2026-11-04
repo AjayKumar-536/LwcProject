@@ -1,0 +1,51 @@
+<template>
+    <lightning-card title="My Custom Carousel"
+                    icon-name="utility:image">
+
+        <div class="carousel-container">
+            <div class="slide-image">
+                <img src={currentSlide.image}
+                     alt={currentSlide.title}
+                     class="hero-image" />
+
+                <button class="nav-button previous"
+                        onclick={handlePrevious}
+                        aria-label="Previous slide">
+                    &#10094;
+                </button>
+
+                <button class="nav-button next"
+                        onclick={handleNext}
+                        aria-label="Next slide">
+                    &#10095;
+                </button>
+
+                <div class="slide-overlay">
+                    <h2>{currentSlide.title}</h2>
+                    <p>{currentSlide.description}</p>
+                </div>
+            </div>
+
+            <div class="indicators">
+                <template for:each={slides}
+                          for:item="slide">
+                    <button key={slide.id}
+                            class={slide.dotClass}
+                            data-index={slide.index}
+                            onclick={handleIndicator}
+                            aria-label={slide.label}>
+                    </button>
+                </template>
+            </div>
+
+            <div class="controls">
+                <lightning-button
+                    label={pauseLabel}
+                    icon-name={pauseIcon}
+                    onclick={toggleAutoplay}>
+                </lightning-button>
+            </div>
+        </div>
+
+    </lightning-card>
+</template>

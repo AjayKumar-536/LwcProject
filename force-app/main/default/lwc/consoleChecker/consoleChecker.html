@@ -1,0 +1,47 @@
+
+<template>
+    <lightning-card
+        title="Console Navigation Checker"
+        icon-name="utility:apps">
+
+        <div class="slds-p-around_medium">
+
+            <template if:false={isLoaded}>
+                <lightning-spinner
+                    alternative-text="Checking console navigation">
+                </lightning-spinner>
+            </template>
+
+            <template if:true={isLoaded}>
+
+                <template if:true={isConsole}>
+                    <div class="slds-text-color_success">
+                        <lightning-icon
+                            icon-name="utility:success"
+                            size="small">
+                        </lightning-icon>
+                        Console Navigation: TRUE
+                    </div>
+                </template>
+
+                <template if:false={isConsole}>
+                    <div class="slds-text-color_error">
+                        Console Navigation: FALSE
+                    </div>
+                </template>
+
+                <p class="slds-m-top_medium">
+                    {consoleStatus}
+                </p>
+
+            </template>
+
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error">
+                    {errorMessage}
+                </p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

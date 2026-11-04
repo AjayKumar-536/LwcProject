@@ -1,0 +1,65 @@
+<template>
+    <section class="gallery-shell">
+        <header class="gallery-header">
+            <div>
+                <p class="eyebrow">DISCOVER ‚Ä¢ EXPLORE ‚Ä¢ REMEMBER</p>
+                <h1>Image Gallery</h1>
+                <p class="subtitle">A curated collection of places and moments.</p>
+            </div>
+            <span class="photo-count">{visibleCount} photos</span>
+        </header>
+
+        <nav class="filters" aria-label="Filter gallery by category">
+            <template for:each={categories} for:item="category">
+                <button
+                    key={category.value}
+                    class={category.cssClass}
+                    data-category={category.value}
+                    onclick={handleCategoryClick}>
+                    {category.label}
+                </button>
+            </template>
+        </nav>
+
+        <template if:true={hasImages}>
+            <div class="image-grid">
+                <template for:each={filteredImages} for:item="photo">
+                    <button
+                        key={photo.id}
+                        class="image-card"
+                        data-id={photo.id}
+                        onclick={openLightbox}
+                        aria-label={photo.openLabel}>
+                        <img src={photo.src} alt={photo.alt} loading="lazy" />
+                        <span class="image-caption">
+                            <span class="image-title">{photo.title}</span>
+                            <span class="image-category">{photo.category}</span>
+                        </span>
+                    </button>
+                </template>
+            </div>
+        </template>
+        <template if:false={hasImages}>
+            <div class="empty-state">
+                <h2>No photos found</h2>
+                <p>Choose another category to see more images.</p>
+            </div>
+        </template>
+    </section>
+
+    <template if:true={isLightboxOpen}>
+        <section class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+            <button class="close-button" onclick={closeLightbox} aria-label="Close preview">√ó</button>
+            <button class="nav-button previous" onclick={showPrevious} aria-label="Previous image">‚Äπ</button>
+            <div class="lightbox-content">
+                <img src={selectedImage.src} alt={selectedImage.alt} />
+                <div class="lightbox-caption">
+                    <h2>{selectedImage.title}</h2>
+                    <p>{selectedImage.description}</p>
+                    <span>{selectedImage.category}</span>
+                </div>
+            </div>
+            <button class="nav-button next" onclick={showNext} aria-label="Next image">‚Ä∫</button>
+        </section>
+    </template>
+</template>

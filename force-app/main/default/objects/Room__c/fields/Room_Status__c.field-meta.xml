@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Room_Status__c</fullName>
+    <label>Room Status</label>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Available</fullName><default>true</default><label>Available</label></value>
+            <value><fullName>Occupied</fullName><default>false</default><label>Occupied</label></value>
+            <value><fullName>Maintenance</fullName><default>false</default><label>Maintenance</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

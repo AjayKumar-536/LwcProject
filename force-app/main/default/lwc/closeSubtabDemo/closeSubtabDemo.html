@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Close Workspace Subtab">
+        <div class="slds-p-around_medium">
+            <p>Click the button to close the currently focused subtab.</p>
+ 
+            <lightning-button
+                label="Close Subtab"
+                variant="destructive"
+                onclick={handleCloseSubtab}>
+            </lightning-button>
+ 
+            <p class="slds-m-top_medium">{message}</p>
+        </div>
+    </lightning-card>
+</template>

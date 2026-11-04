@@ -1,0 +1,33 @@
+<template>
+    <lightning-card
+        title="Student Details - CSV Generation"
+        icon-name="standard:report">
+
+        <div class="slds-p-around_medium">
+
+            <p class="slds-m-bottom_medium">
+                Click the button to download student details
+                as a CSV file.
+            </p>
+
+            <lightning-button
+                label="Download CSV"
+                variant="brand"
+                icon-name="utility:download"
+                onclick={handleDownloadCSV}>
+            </lightning-button>
+
+            <div class="slds-m-top_large">
+                <lightning-datatable
+                    key-field="id"
+                    data={students}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </div>
+
+            <p class="slds-m-top_medium">{statusMessage}</p>
+
+        </div>
+    </lightning-card>
+</template>

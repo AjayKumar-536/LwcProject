@@ -1,0 +1,38 @@
+<template>
+    <section class="welcome-card">
+        <div class="banner-content">
+
+            <template lwc:if={showIcon}>
+                <div class="icon-container">
+                    <lightning-icon
+                        icon-name="utility:success"
+                        alternative-text="Welcome"
+                        size="large"
+                        variant="inverse">
+                    </lightning-icon>
+                </div>
+            </template>
+
+            <h1>{bannerTitle}</h1>
+
+            <p class="description">
+                {bannerMessage}
+            </p>
+
+            <template lwc:if={showButton}>
+                <lightning-button
+                    label={buttonLabel}
+                    variant="brand"
+                    onclick={handleClick}>
+                </lightning-button>
+            </template>
+
+            <template lwc:if={showConfirmation}>
+                <p class="confirmation">
+                    Welcome! Your button is working.
+                </p>
+            </template>
+
+        </div>
+    </section>
+</template>

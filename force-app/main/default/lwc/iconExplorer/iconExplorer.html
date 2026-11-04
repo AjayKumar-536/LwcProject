@@ -1,0 +1,107 @@
+<template>
+    <lightning-card title="Salesforce Icon Explorer"
+                    icon-name="standard:apps">
+        <div class="explorer-container">
+
+            <p class="intro">
+                Search, filter, preview and select Salesforce icons.
+            </p>
+
+            <div class="filters">
+                <lightning-input
+                    type="search"
+                    label="Search Icons"
+                    placeholder="Search by icon name..."
+                    value={searchTerm}
+                    onchange={handleSearch}>
+                </lightning-input>
+
+                <lightning-combobox
+                    label="Category"
+                    value={selectedCategory}
+                    options={categoryOptions}
+                    onchange={handleCategoryChange}>
+                </lightning-combobox>
+
+                <lightning-combobox
+                    label="Icon Size"
+                    value={selectedSize}
+                    options={sizeOptions}
+                    onchange={handleSizeChange}>
+                </lightning-combobox>
+            </div>
+
+            <p class="result-count">
+                Icons found: {filteredIcons.length}
+            </p>
+
+            <div class="icon-grid">
+                <template for:each={filteredIcons} for:item="item">
+                    <button
+                        key={item.name}
+                        class={item.cardClass}
+                        data-name={item.name}
+                        onclick={handleSelect}
+                        title={item.code}>
+
+                        <lightning-icon
+                            icon-name={item.code}
+                            size={selectedSize}
+                            alternative-text={item.name}>
+                        </lightning-icon>
+
+                        <span class="icon-label">{item.name}</span>
+                        <span class="icon-category">{item.category}</span>
+                    </button>
+                </template>
+            </div>
+
+            <template lwc:if={noResults}>
+                <div class="empty-state">
+                    No icons match your search.
+                </div>
+            </template>
+
+            <template lwc:if={selectedIcon}>
+                <section class="selected-panel">
+                    <h2>Selected Icon</h2>
+
+                    <div class="selected-preview">
+                        <lightning-icon
+                            icon-name={selectedIcon.code}
+                            size={selectedSize}
+                            alternative-text={selectedIcon.name}>
+                        </lightning-icon>
+
+                        <div>
+                            <p class="selected-name">
+                                {selectedIcon.name}
+                            </p>
+                            <p>{selectedIcon.code}</p>
+                        </div>
+                    </div>
+
+                    <lightning-textarea
+                        label="LWC HTML Code"
+                        value={selectedIcon.lwcCode}
+                        readonly>
+                    </lightning-textarea>
+
+                    <lightning-button
+                        class="copy-button"
+                        label="Copy LWC Code"
+                        icon-name="utility:copy"
+                        variant="brand"
+                        onclick={handleCopy}>
+                    </lightning-button>
+
+                    <p class="help-text">
+                        If clipboard access is blocked, select and copy
+                        the code from the text field above.
+                    </p>
+                </section>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

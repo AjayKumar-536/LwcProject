@@ -1,0 +1,95 @@
+:host {
+    display: block;
+}
+
+.builder-container {
+    padding: 20px;
+}
+
+.intro {
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: #edf5ff;
+}
+
+.intro h2 {
+    color: #16325c;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.intro p {
+    color: #444;
+    font-size: 14px;
+}
+
+.field-section {
+    padding: 16px;
+    margin: 20px 0;
+    border: 1px solid #dddbda;
+    border-radius: 8px;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.query-section {
+    margin-top: 28px;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #b8c8df;
+    background: #f8fafc;
+}
+
+.query-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.query-heading h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #16325c;
+}
+
+.query-output {
+    padding: 18px;
+    border-radius: 8px;
+    background: #172435;
+    color: #a9e6b4;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow-x: auto;
+}
+
+.help-text {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #5c5c5c;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .builder-container {
+        padding: 12px;
+    }
+
+    .intro h2 {
+        font-size: 19px;
+    }
+
+    .query-output {
+        padding: 12px;
+        font-size: 12px;
+    }
+}

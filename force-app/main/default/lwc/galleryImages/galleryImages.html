@@ -1,0 +1,110 @@
+
+<template>
+    <div class="gallery-app">
+        <header class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">YOUR CREATIVE SPACE</span>
+                <h1>Colorful Gallery</h1>
+                <p>Discover beautiful moments, one image at a time.</p>
+            </div>
+        </header>
+
+        <section class="stats">
+            <div class="stat-box">
+                <span class="stat-number">{totalImages}</span>
+                <span class="stat-label">Total Images</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">{favoriteCount}</span>
+                <span class="stat-label">Favorites</span>
+            </div>
+        </section>
+
+        <section class="toolbar">
+            <lightning-input
+                type="search"
+                label="Search gallery"
+                placeholder="Search images..."
+                value={searchTerm}
+                onchange={handleSearch}>
+            </lightning-input>
+
+            <lightning-combobox
+                label="Category"
+                value={selectedCategory}
+                options={categories}
+                onchange={handleCategoryChange}>
+            </lightning-combobox>
+        </section>
+
+        <section class="gallery-grid">
+            <template for:each={filteredImages} for:item="item">
+                <article key={item.id} class={item.color}>
+                    <div class="image-frame">
+                        <img
+                            src={item.image}
+                            alt={item.title}
+                            data-id={item.id}
+                            onclick={openPreview} />
+
+                        <button
+                            class="favorite-button"
+                            data-id={item.id}
+                            onclick={toggleFavorite}
+                            aria-label="Toggle favorite">
+                            <lightning-icon
+                                icon-name={item.favoriteIcon}
+                                size="small"
+                                alternative-text="Favorite">
+                            </lightning-icon>
+                        </button>
+                    </div>
+
+                    <div class="card-content">
+                        <span class="category-tag">{item.category}</span>
+                        <h2>{item.title}</h2>
+                        <p>{item.description}</p>
+                        <button
+                            class="view-button"
+                            data-id={item.id}
+                            onclick={openPreview}>
+                            View Image ↗
+                        </button>
+                    </div>
+                </article>
+            </template>
+        </section>
+
+        <template lwc:if={hasImages}>
+        </template>
+        <template lwc:else>
+            <div class="empty-state">
+                <h2>No images found</h2>
+                <p>Try a different search or category.</p>
+            </div>
+        </template>
+
+        <template lwc:if={selectedImage}>
+            <section
+                class="modal-backdrop"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Image preview"
+                onclick={closePreview}>
+                <div class="modal-content" onclick={stopPropagation}>
+                    <button
+                        class="close-button"
+                        onclick={closePreview}
+                        aria-label="Close preview">✕</button>
+
+                    <img
+                        src={selectedImage.image}
+                        alt={selectedImage.title} />
+
+                    <h2>{selectedImage.title}</h2>
+                    <p>{selectedImage.description}</p>
+                </div>
+            </section>
+        </template>
+    </div>
+</template>

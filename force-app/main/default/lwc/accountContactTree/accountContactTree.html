@@ -1,0 +1,39 @@
+<template>
+    <lightning-card
+        title="Account and Contact Tree Grid"
+        icon-name="standard:account">
+
+        <div class="grid-container">
+
+            <template lwc:if={isLoading}>
+                <lightning-spinner
+                    alternative-text="Loading account and contact data"
+                    size="medium">
+                </lightning-spinner>
+            </template>
+
+            <template lwc:if={errorMessage}>
+                <div class="error-message" role="alert">
+                    {errorMessage}
+                </div>
+            </template>
+
+            <template lwc:if={hasRecords}>
+                <lightning-tree-grid
+                    key-field="id"
+                    data={gridData}
+                    columns={columns}
+                    hide-checkbox-column
+                    aria-label="Accounts and related contacts">
+                </lightning-tree-grid>
+            </template>
+
+            <template lwc:if={showEmptyMessage}>
+                <div class="empty-message">
+                    No Accounts were found or available to you.
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

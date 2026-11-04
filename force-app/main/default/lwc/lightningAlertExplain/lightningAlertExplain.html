@@ -1,0 +1,38 @@
+<template>
+    <lightning-card
+        title="Lightning Alert Demo"
+        icon-name="utility:notification">
+
+        <div class="slds-p-around_medium">
+            <p class="slds-m-bottom_medium">
+                Click a button to display an alert.
+            </p>
+
+            <div class="button-container">
+                <lightning-button
+                    label="Success Alert"
+                    variant="success"
+                    onclick={handleSuccess}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Error Alert"
+                    variant="destructive"
+                    onclick={handleError}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Warning Alert"
+                    variant="brand"
+                    onclick={handleWarning}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Info Alert"
+                    variant="neutral"
+                    onclick={handleInfo}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

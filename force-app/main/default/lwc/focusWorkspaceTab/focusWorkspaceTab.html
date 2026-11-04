@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Focus Workspace Tab">
+        <div class="slds-var-p-around_medium">
+            <p>
+                Click the button to focus the current workspace tab.
+            </p>
+ 
+            <lightning-button
+                label="Focus Tab"
+                variant="brand"
+                onclick={handleFocusTab}>
+            </lightning-button>
+ 
+            <p class="slds-var-m-top_medium">{message}</p>
+        </div>
+    </lightning-card>
+</template>

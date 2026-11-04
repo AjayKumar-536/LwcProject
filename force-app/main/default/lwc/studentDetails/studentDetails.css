@@ -1,0 +1,157 @@
+
+.student-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 24px;
+    color: #181818;
+}
+
+.page-header {
+    padding: 28px 20px;
+    margin-bottom: 24px;
+    text-align: center;
+    background: #eaf3ff;
+    border-radius: 14px;
+}
+
+.page-header h1 {
+    color: #16325c;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #526581;
+    font-size: 14px;
+}
+
+.form-card,
+.records-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-card h2,
+.records-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #16325c;
+    margin-bottom: 18px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.stats-card {
+    padding: 20px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+    background: #f0f7ff;
+    border-left: 5px solid #0176d3;
+}
+
+.stats-card p {
+    color: #526581;
+    font-size: 14px;
+}
+
+.stats-card h2 {
+    margin-top: 6px;
+    color: #0176d3;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.records-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    width: 350px;
+    max-width: 100%;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+thead {
+    background: #f3f6f9;
+}
+
+th,
+td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    color: #16325c;
+    font-weight: 700;
+}
+
+tbody tr:hover {
+    background: #f8fbff;
+}
+
+.empty-state {
+    padding: 35px 15px;
+    text-align: center;
+    color: #706e6b;
+    background: #f8f9fb;
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    .student-container {
+        padding: 12px;
+        margin: 8px auto;
+    }
+
+    .page-header h1 {
+        font-size: 22px;
+    }
+
+    .form-card,
+    .records-card {
+        padding: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+}

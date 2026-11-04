@@ -1,0 +1,23 @@
+.header-section {
+    padding: 16px;
+    background: #f3f6fa;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.header-section h2 {
+    font-weight: 600;
+    color: #16325c;
+    margin-bottom: 6px;
+}
+
+.header-section p {
+    color: #444;
+    font-size: 14px;
+}
+
+.slds-modal__container {
+    max-width: 600px;
+    width: 90%;
+}
+

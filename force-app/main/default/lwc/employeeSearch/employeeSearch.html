@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Employee Search" icon-name="standard:search">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                type="search"
+                label="Search Employees"
+                placeholder="Search by name, ID, department or city..."
+                value={searchTerm}
+                onchange={handleSearch}>
+            </lightning-input>
+
+            <p class="slds-m-vertical_small">
+                Matching Records: {totalRecords}
+            </p>
+
+            <template lwc:if={hasRecords}>
+                <lightning-datatable
+                    key-field="id"
+                    data={filteredEmployees}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+
+            <template lwc:else>
+                <div class="empty-message">
+                    No employees found. Try another search.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

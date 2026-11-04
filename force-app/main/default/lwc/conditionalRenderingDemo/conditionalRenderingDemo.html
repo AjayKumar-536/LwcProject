@@ -1,0 +1,73 @@
+<template>
+    <lightning-card
+        title="Student Result Status"
+        icon-name="standard:education">
+
+        <div class="slds-p-around_medium">
+
+            <p class="slds-m-bottom_medium">
+                Select a result status:
+            </p>
+
+            <div class="button-container">
+                <lightning-button
+                    label="Pass"
+                    variant="success"
+                    onclick={handlePass}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Pending"
+                    variant="brand"
+                    onclick={handlePending}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Fail"
+                    variant="destructive"
+                    onclick={handleFail}>
+                </lightning-button>
+            </div>
+
+            <div class="result-box slds-m-top_large">
+
+                <template lwc:if={isPass}>
+                    <div class="success-message">
+                        <lightning-icon
+                            icon-name="utility:success"
+                            size="small"
+                            alternative-text="Success">
+                        </lightning-icon>
+
+                        <p>Congratulations! Student passed.</p>
+                    </div>
+                </template>
+
+                <template lwc:elseif={isPending}>
+                    <div class="pending-message">
+                        <lightning-icon
+                            icon-name="utility:clock"
+                            size="small"
+                            alternative-text="Pending">
+                        </lightning-icon>
+
+                        <p>Result is pending. Please wait.</p>
+                    </div>
+                </template>
+
+                <template lwc:else>
+                    <div class="error-message">
+                        <lightning-icon
+                            icon-name="utility:error"
+                            size="small"
+                            alternative-text="Failed">
+                        </lightning-icon>
+
+                        <p>Student failed. Improvement is needed.</p>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </lightning-card>
+</template>

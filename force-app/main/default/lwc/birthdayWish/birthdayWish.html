@@ -1,0 +1,67 @@
+<template>
+    <div class="birthday-container">
+        <div class="hearts">💖 ✨ 💗 🎈 💖</div>
+
+        <div class="birthday-card">
+            <div class="cake">🎂</div>
+
+            <h1>Happy Birthday!</h1>
+
+            <h2>{recipientName} ❤️</h2>
+
+            <p class="message">
+                {birthdayMessage}
+            </p>
+
+            <p class="subtitle">
+                You make the world more beautiful
+                just by being in it. 🌸
+            </p>
+
+            <lightning-button
+                label="Open Your Surprise 🎁"
+                variant="brand"
+                onclick={handleSurprise}>
+            </lightning-button>
+
+            <template lwc:if={showSurprise}>
+                <div class="surprise">
+                    <h2>🎉 A Special Wish for You! 🎉</h2>
+
+                    <p>
+                        May your life be filled with
+                        happiness, love, success,
+                        and countless beautiful memories.
+                    </p>
+
+                    <p>
+                        You will always have a special
+                        place in my heart. 🫂❤️
+                    </p>
+
+                    <div class="flowers">🌹 🌷 🌻 🌸</div>
+                </div>
+            </template>
+
+            <div class="video-section">
+                <h2>Our Beautiful Memories 📸</h2>
+
+                <p>
+                    A little collection of moments
+                    to remember forever.
+                </p>
+
+                <video controls class="birthday-video">
+                    <source
+                        src={videoUrl}
+                        type="video/mp4"/>
+                    Your browser does not support video.
+                </video>
+            </div>
+
+            <footer>
+                Made with ❤️ just for you
+            </footer>
+        </div>
+    </div>
+</template>

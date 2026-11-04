@@ -1,0 +1,21 @@
+Salesforce Birthday Surprise LWC project folder structure
+
+salesforce_birthday_lwc/
+├── sfdx-project.json
+├── README.txt
+├── FOLDER_STRUCTURE.txt
+└── force-app/
+    └── main/
+        └── default/
+            └── lwc/
+                └── birthdaySurprise/
+                    ├── birthdaySurprise.html
+                    ├── birthdaySurprise.css
+                    ├── birthdaySurprise.js
+                    └── birthdaySurprise.js-meta.xml
+
+To use:
+1. Extract this ZIP.
+2. Open the salesforce_birthday_lwc folder in VS Code.
+3. Authorize your Salesforce org.
+4. Deploy the birthdaySurprise component folder.

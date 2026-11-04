@@ -1,0 +1,18 @@
+<template>
+    <div class="shell">
+        <header><b>HAVENSTAY</b><span>HOTEL OPERATIONS</span></header>
+        <div class="layout">
+            <nav><button onclick={showDashboard}>Overview</button><button onclick={showRooms}>Rooms</button><button
+                    onclick={showBookings}>Bookings</button><button onclick={showGuests}>Guests</button></nav>
+            <main><template lwc:if={dashboard}><c-hotel-dashboard bookings={bookings} rooms={rooms}
+                        guests={guests}></c-hotel-dashboard></template><template
+                    lwc:elseif={roomPage}><c-hotel-room-manager
+                        rooms={rooms}></c-hotel-room-manager></template><template
+                    lwc:elseif={bookingPage}><c-hotel-booking-manager bookings={bookings}
+                        oncreatebooking={openModal}></c-hotel-booking-manager></template><template
+                    lwc:elseif={guestPage}><c-hotel-guest-directory
+                        guests={guests}></c-hotel-guest-directory></template></main>
+        </div><template lwc:if={modal}><c-hotel-booking-modal onclose={closeModal}
+                onsavebooking={saveBooking}></c-hotel-booking-modal></template><c-hotel-toast></c-hotel-toast>
+    </div>
+</template>

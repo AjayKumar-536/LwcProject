@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Birthday Surprise</masterLabel>
+    <description>A personalized birthday greeting page for an Experience Cloud site.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recipientName" type="String" label="Birthday Person's Name" default="Dear Chellamma"/>
+            <property name="senderName" type="String" label="Your Name" default="Ajay Kumar"/>
+            <property name="birthdayMessage" type="String" label="Personal Birthday Message" default="Happy Birthday, dear sister!"/>
+            <property name="videoUrl" type="String" label="Birthday Video URL" description="Optional public video URL, such as a YouTube watch link."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Enable Workspace Tab Close">
+        <div class="slds-p-around_medium">
+            <lightning-button
+                label="Enable Tab Close"
+                variant="brand"
+                onclick={handleEnableTabClose}>
+            </lightning-button>
+ 
+            <template lwc:if={message}>
+                <p class="slds-m-top_medium">{message}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

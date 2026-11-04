@@ -1,0 +1,34 @@
+<template>
+    <lightning-card>
+        <h1>Ierator Example</h1>
+        <table class="slds-table slds-table_bordered">
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Age</td>
+                    <td>City</td>
+                </tr>
+            </thead>
+        <template iterator:emp={employeeList}>
+            <template if:true={emp.first}>
+            <tr key={emp.value.id}>
+            <td>{emp.value.Fname}</td>
+            <td>{emp.value.Lname}</td>
+            <td>{emp.value.Age}</td>
+            <td>{emp.value.City}</td>
+            </tr>
+            </template>
+            <template if:true={emp.last}>
+                <tr key={emp.value.id}>
+                <td>{emp.value.Fname}</td>
+                <td>{emp.value.Lname}</td>
+                <td>{emp.value.Age}</td>
+                <td>{emp.value.City}</td>
+                </tr>
+                </template>
+        </template>
+    </table>
+    </lightning-card>
+    
+</template>

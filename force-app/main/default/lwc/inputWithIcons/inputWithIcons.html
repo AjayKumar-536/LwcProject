@@ -1,0 +1,145 @@
+<template>
+    <lightning-card title="Employee Input Form"
+                    icon-name="standard:contact">
+
+        <div class="form-container">
+
+            <!-- Search input with icon -->
+            <div class="input-row">
+                <lightning-icon
+                    icon-name="utility:search"
+                    size="small"
+                    alternative-text="Search"
+                    class="field-icon">
+                </lightning-icon>
+
+                <div class="input-control">
+                    <lightning-input
+                        type="text"
+                        label="Search Employees"
+                        placeholder="Search by name or department..."
+                        value={searchKey}
+                        onchange={handleSearch}>
+                    </lightning-input>
+                </div>
+            </div>
+
+            <!-- Email input with icon -->
+            <div class="input-row">
+                <lightning-icon
+                    icon-name="utility:email"
+                    size="small"
+                    alternative-text="Email"
+                    class="field-icon">
+                </lightning-icon>
+
+                <div class="input-control">
+                    <lightning-input
+                        type="email"
+                        label="Email Address"
+                        placeholder="example@company.com"
+                        value={email}
+                        onchange={handleEmailChange}
+                        required>
+                    </lightning-input>
+                </div>
+            </div>
+
+            <!-- Password input with icon -->
+            <div class="input-row">
+                <lightning-icon
+                    icon-name="utility:lock"
+                    size="small"
+                    alternative-text="Password"
+                    class="field-icon">
+                </lightning-icon>
+
+                <div class="input-control">
+                    <lightning-input
+                        type="password"
+                        label="Password"
+                        placeholder="Enter a practice password"
+                        value={password}
+                        onchange={handlePasswordChange}
+                        required>
+                    </lightning-input>
+                </div>
+            </div>
+
+            <!-- Date input with icon -->
+            <div class="input-row">
+                <lightning-icon
+                    icon-name="utility:event"
+                    size="small"
+                    alternative-text="Joining date"
+                    class="field-icon">
+                </lightning-icon>
+
+                <div class="input-control">
+                    <lightning-input
+                        type="date"
+                        label="Joining Date"
+                        value={joiningDate}
+                        onchange={handleDateChange}
+                        required>
+                    </lightning-input>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <lightning-button
+                    label="Submit"
+                    variant="brand"
+                    onclick={handleSubmit}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Clear"
+                    variant="neutral"
+                    onclick={handleClear}>
+                </lightning-button>
+            </div>
+
+            <template lwc:if={showMessage}>
+                <div class="success-message" role="status">
+                    {successMessage}
+                </div>
+            </template>
+
+            <!-- Dynamic employee search results -->
+            <div class="results-section">
+                <h2>Employee Records</h2>
+
+                <template lwc:if={filteredEmployees.length}>
+                    <template
+                        for:each={filteredEmployees}
+                        for:item="employee">
+
+                        <div key={employee.id} class="employee-row">
+                            <div>
+                                <p class="employee-name">
+                                    {employee.name}
+                                </p>
+                                <p class="employee-department">
+                                    {employee.department}
+                                </p>
+                            </div>
+                            <lightning-icon
+                                icon-name="utility:chevronright"
+                                size="x-small"
+                                alternative-text="Employee">
+                            </lightning-icon>
+                        </div>
+                    </template>
+                </template>
+
+                <template lwc:else>
+                    <p class="empty-message">
+                        No employees found.
+                    </p>
+                </template>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

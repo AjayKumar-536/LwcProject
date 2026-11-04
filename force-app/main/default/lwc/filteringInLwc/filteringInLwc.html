@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Filtering in LWC">
+        <div class="slds-p-around_medium">
+            <lightning-input type="search" label="Search by name" value={searchKey} onchange={handleSearch}></lightning-input>
+            <template for:each={filteredStudents} for:item="student">
+                <div key={student.id} class="student slds-box slds-m-top_x-small">
+                    <strong>{student.name}</strong> ‚A1 {student.department}
+                </div>
+            </template>
+            <template if:false={hasResults}><p class="slds-m-top_medium">No matching students.</p></template>
+        </div>
+    </lightning-card>
+</template>

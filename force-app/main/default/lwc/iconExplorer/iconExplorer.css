@@ -1,0 +1,141 @@
+:host {
+    display: block;
+}
+
+.explorer-container {
+    padding: 20px;
+}
+
+.intro {
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 14px;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+    align-items: end;
+}
+
+.result-count {
+    margin: 22px 0 12px;
+    color: #444;
+    font-weight: 600;
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.icon-card {
+    display: flex;
+    min-width: 0;
+    min-height: 112px;
+    padding: 16px 8px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 9px;
+    border: 1px solid #dddbda;
+    border-radius: 10px;
+    background: #fff;
+    color: #181818;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.icon-card:hover {
+    border-color: #0176d3;
+    background: #f2f8ff;
+}
+
+.icon-card.selected {
+    border: 2px solid #0176d3;
+    background: #edf5ff;
+}
+
+.icon-label {
+    max-width: 100%;
+    font-size: 13px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.icon-category {
+    color: #706e6b;
+    font-size: 11px;
+}
+
+.selected-panel {
+    margin-top: 28px;
+    padding: 20px;
+    border: 1px solid #c9d9ed;
+    border-radius: 10px;
+    background: #f7faff;
+}
+
+.selected-panel h2 {
+    margin-bottom: 18px;
+    color: #16325c;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.selected-preview {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.selected-name {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.copy-button {
+    display: block;
+    margin-top: 16px;
+}
+
+.help-text {
+    margin-top: 12px;
+    color: #5c5c5c;
+    font-size: 12px;
+}
+
+.empty-state {
+    padding: 28px;
+    color: #706e6b;
+    text-align: center;
+    border: 1px dashed #c9c7c5;
+    border-radius: 8px;
+}
+
+@media (max-width: 800px) {
+    .icon-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .explorer-container {
+        padding: 12px;
+    }
+
+    .icon-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

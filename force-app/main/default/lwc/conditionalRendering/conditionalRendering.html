@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Conditional Rendering">
+        <lightning-input type="checkbox" label="Show Details" onchange={handleChange}>
+        </lightning-input>
+        <template if:true={flag}>
+            This is True Block!
+        </template>
+        <template if:false={flag}>
+            This is False Block!
+        </template>
+    </lightning-card>
+</template>

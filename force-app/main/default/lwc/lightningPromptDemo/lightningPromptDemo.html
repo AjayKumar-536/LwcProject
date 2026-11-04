@@ -1,0 +1,22 @@
+<template>
+    <lightning-card
+        title="Voting Eligibility Checker"
+        icon-name="utility:user">
+
+        <div class="slds-p-around_medium">
+            <p class="slds-m-bottom_medium">
+                Check whether you are eligible to vote.
+            </p>
+
+            <lightning-button
+                label="Check Eligibility"
+                variant="brand"
+                onclick={handleCheckEligibility}>
+            </lightning-button>
+
+            <div class="slds-m-top_medium">
+                <p>{statusMessage}</p>
+            </div>
+        </div>
+    </lightning-card>
+</template>

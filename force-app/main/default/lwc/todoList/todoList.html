@@ -1,0 +1,80 @@
+
+<template>
+    <div class="todo-container">
+        <div class="header">
+            <h1>My To-Do List</h1>
+            <p>Organize your day, one task at a time!</p>
+        </div>
+
+        <div class="input-section">
+            <lightning-input
+                type="text"
+                label="New Task"
+                placeholder="Enter your task..."
+                value={newTask}
+                onchange={handleInputChange}>
+            </lightning-input>
+
+            <lightning-button
+                label="Add Task"
+                variant="brand"
+                onclick={addTask}>
+            </lightning-button>
+        </div>
+
+        <div class="task-stats">
+            <div class="stat-card">
+                <h2>{totalTasks}</h2>
+                <p>Total</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>{pendingTasks}</h2>
+                <p>Pending</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>{completedTasks}</h2>
+                <p>Completed</p>
+            </div>
+        </div>
+
+        <template lwc:if={hasTasks}>
+            <ul class="task-list">
+                <template for:each={tasks} for:item="task">
+                    <li key={task.id} class="task-item">
+                        <lightning-input
+                            type="checkbox"
+                            checked={task.completed}
+                            data-id={task.id}
+                            onchange={toggleTask}>
+                        </lightning-input>
+
+                        <span class={task.cssClass}>
+                            {task.name}
+                        </span>
+
+                        <lightning-button-icon
+                            icon-name="utility:delete"
+                            alternative-text="Delete task"
+                            title="Delete task"
+                            data-id={task.id}
+                            onclick={deleteTask}
+                            variant="bare">
+                        </lightning-button-icon>
+                    </li>
+                </template>
+            </ul>
+        </template>
+
+        <template lwc:else>
+            <div class="empty-message">
+                <p>No tasks yet. Add your first task!</p>
+            </div>
+        </template>
+
+        <div class="footer">
+            <p>Stay focused. Get things done!</p>
+        </div>
+    </div>
+</template>

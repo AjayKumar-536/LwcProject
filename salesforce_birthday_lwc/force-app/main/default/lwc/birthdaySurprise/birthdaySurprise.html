@@ -1,0 +1,38 @@
+<template>
+    <main class="birthday-page">
+        <div class="sparkle sparkle-one">✦</div>
+        <div class="sparkle sparkle-two">✧</div>
+        <div class="sparkle sparkle-three">✦</div>
+
+        <section class="hero">
+            <p class="eyebrow">A LITTLE SURPRISE JUST FOR YOU</p>
+            <div class="cake" aria-hidden="true">🎂</div>
+            <h1>Happy Birthday, <span class="name">{recipientName}</span>!</h1>
+            <p class="subtitle">Today is all about celebrating the wonderful person you are.</p>
+
+            <div class="balloons" aria-hidden="true">
+                <span>🎈</span><span>🎈</span><span>🎈</span><span>🎈</span><span>🎈</span>
+            </div>
+
+            <button class="surprise-button" onclick={revealMessage}>
+                {buttonLabel}
+            </button>
+
+            <template if:true={isMessageVisible}>
+                <div class="message-card">
+                    <h2>A message from {senderName} 💖</h2>
+                    <p>{birthdayMessage}</p>
+                    <p class="signature">With love, {senderName}</p>
+                </div>
+            </template>
+
+            <template if:true={hasVideo}>
+                <a class="video-link" href={videoUrl} target="_blank" rel="noopener noreferrer">
+                    ▶ Watch your birthday video
+                </a>
+            </template>
+
+            <p class="footer-note">May your year ahead be full of love, laughter, and beautiful memories ✨</p>
+        </section>
+    </main>
+</template>

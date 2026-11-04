@@ -1,0 +1,25 @@
+:host {
+    display: block;
+}
+
+.grid-container {
+    position: relative;
+    min-height: 100px;
+    padding: 16px;
+    overflow-x: auto;
+}
+
+.error-message {
+    padding: 14px;
+    border-radius: 6px;
+    background: #fef1ee;
+    color: #ba0517;
+    overflow-wrap: anywhere;
+}
+
+.empty-message {
+    padding: 24px 12px;
+    text-align: center;
+    color: #706e6b;
+    font-size: 14px;
+}

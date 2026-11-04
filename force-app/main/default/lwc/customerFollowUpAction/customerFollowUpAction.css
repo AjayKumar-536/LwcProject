@@ -1,0 +1,35 @@
+.form-container {
+    padding: 16px;
+}
+
+.record-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 20px;
+    background: #f0f7ff;
+    border-radius: 8px;
+}
+
+.record-label {
+    color: #5c5c5c;
+    font-size: 12px;
+}
+
+.record-id {
+    color: #16325c;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+lightning-input,
+lightning-combobox,
+lightning-textarea {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.save-button {
+    margin-left: 10px;
+}

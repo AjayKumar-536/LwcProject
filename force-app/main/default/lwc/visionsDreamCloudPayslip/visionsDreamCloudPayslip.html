@@ -1,0 +1,141 @@
+<template>
+    <lightning-card title="VisionsDream Cloud Company - Payslip Generator" icon-name="standard:document">
+        <div class="slds-p-horizontal_medium">
+
+            <!-- Pay period -->
+            <h3 class="slds-text-heading_small slds-m-bottom_x-small">Pay Period</h3>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-combobox
+                        name="month"
+                        label="Month"
+                        value={form.month}
+                        options={monthOptions}
+                        onchange={handleFieldChange}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input
+                        type="number"
+                        name="year"
+                        label="Year"
+                        value={form.year}
+                        onchange={handleFieldChange}>
+                    </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Employee details -->
+            <h3 class="slds-text-heading_small slds-m-vertical_x-small">Employee Details</h3>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input name="employeeName" label="Employee Name" value={form.employeeName}
+                        required onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input name="employeeId" label="Employee ID" value={form.employeeId}
+                        required onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input name="designation" label="Designation" value={form.designation}
+                        onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input name="department" label="Department" value={form.department}
+                        onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="date" name="dateOfJoining" label="Date of Joining"
+                        value={form.dateOfJoining} onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input name="pan" label="PAN" value={form.pan}
+                        onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input name="bankAccount" label="Bank Account No." value={form.bankAccount}
+                        onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="3" padding="around-small">
+                    <lightning-input type="number" name="workingDays" label="Working Days"
+                        value={form.workingDays} onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="3" padding="around-small">
+                    <lightning-input type="number" name="daysPaid" label="Days Paid"
+                        value={form.daysPaid} onchange={handleFieldChange}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Earnings & deductions -->
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <h3 class="slds-text-heading_small slds-m-bottom_x-small">Earnings (INR)</h3>
+                    <template for:each={earnings} for:item="item">
+                        <lightning-input
+                            key={item.key}
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            label={item.label}
+                            data-group="earnings"
+                            data-key={item.key}
+                            value={item.value}
+                            onchange={handleAmountChange}>
+                        </lightning-input>
+                    </template>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <h3 class="slds-text-heading_small slds-m-bottom_x-small">Deductions (INR)</h3>
+                    <template for:each={deductions} for:item="item">
+                        <lightning-input
+                            key={item.key}
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            label={item.label}
+                            data-group="deductions"
+                            data-key={item.key}
+                            value={item.value}
+                            onchange={handleAmountChange}>
+                        </lightning-input>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Summary -->
+            <div class="slds-box slds-theme_shade slds-m-vertical_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12" medium-device-size="4" padding="around-small">
+                        <div class="slds-text-title">Total Earnings</div>
+                        <div class="slds-text-heading_small">{totalEarningsLabel}</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" medium-device-size="4" padding="around-small">
+                        <div class="slds-text-title">Total Deductions</div>
+                        <div class="slds-text-heading_small">{totalDeductionsLabel}</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" medium-device-size="4" padding="around-small">
+                        <div class="slds-text-title">Net Pay</div>
+                        <div class="slds-text-heading_medium slds-text-color_success">{netPayLabel}</div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <div class="slds-text-body_small slds-p-horizontal_small">{netPayInWords}</div>
+            </div>
+        </div>
+
+        <div slot="footer">
+            <lightning-button
+                variant="neutral"
+                label="Reset"
+                class="slds-m-right_small"
+                onclick={handleReset}>
+            </lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Generate Payslip PDF"
+                icon-name="utility:download"
+                disabled={isGenerating}
+                onclick={handleGeneratePdf}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="LWS CSV Download Demo">
+        <div class="slds-p-around_medium">
+ 
+            <p class="slds-m-bottom_medium">
+                Generate a sample employee CSV file.
+            </p>
+ 
+            <lightning-button
+                label="Generate CSV"
+                variant="brand"
+                onclick={handleGenerate}>
+            </lightning-button>
+ 
+            <template lwc:if={downloadUrl}>
+                <div class="slds-m-top_medium">
+                    <a
+                        href={downloadUrl}
+                        download="Employees.csv"
+                        target="_self">
+                        Download Employees.csv
+                    </a>
+                </div>
+            </template>
+ 
+            <template lwc:if={message}>
+                <p class="slds-m-top_medium">{message}</p>
+            </template>
+ 
+        </div>
+    </lightning-card>
+</template>
+ 

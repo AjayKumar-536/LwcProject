@@ -1,0 +1,4 @@
+SELECT Id, FirstName, LastName, Email, Phone, Account.Name
+FROM Contact
+ORDER BY LastName ASC
+LIMIT 100

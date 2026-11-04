@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Close Workspace Tab">
+        <div class="slds-p-around_medium">
+            <p>Click the button to close the current workspace tab.</p>
+ 
+            <lightning-button
+                label="Close Current Tab"
+                variant="destructive"
+                onclick={handleCloseTab}>
+            </lightning-button>
+ 
+            <p class="slds-m-top_medium">{message}</p>
+        </div>
+    </lightning-card>
+</template>

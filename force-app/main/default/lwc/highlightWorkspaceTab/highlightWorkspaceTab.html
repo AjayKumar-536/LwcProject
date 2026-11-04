@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Highlight Workspace Tab">
+        <div class="slds-p-around_medium">
+            <lightning-button
+                label="Highlight Tab"
+                variant="brand"
+                onclick={handleHighlightTab}>
+            </lightning-button>
+ 
+            <template lwc:if={message}>
+                <p class="slds-m-top_medium">{message}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

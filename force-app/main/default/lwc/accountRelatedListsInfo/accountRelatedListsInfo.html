@@ -1,0 +1,44 @@
+<template>
+    <lightning-card title="Account Related Lists">
+        <div class="slds-p-around_medium">
+
+            <!-- Loading message -->
+            <template lwc:if={isLoading}>
+                <lightning-spinner
+                    alternative-text="Loading related lists">
+                </lightning-spinner>
+            </template>
+
+            <!-- Error message -->
+            <template lwc:elseif={error}>
+                <p class="slds-text-color_error">
+                    {errorMessage}
+                </p>
+            </template>
+
+            <!-- Related lists -->
+            <template lwc:elseif={hasRelatedLists}>
+                <template for:each={relatedLists} for:item="item">
+                    <div key={item.relatedListId}
+                         class="slds-box slds-m-bottom_small">
+
+                        <p>
+                            <strong>{item.label}</strong>
+                        </p>
+
+                        <p class="slds-text-body_small">
+                            API Name: {item.relatedListId}
+                        </p>
+
+                    </div>
+                </template>
+            </template>
+
+            <!-- Empty result -->
+            <template lwc:else>
+                <p>No related lists were returned.</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,146 @@
+<template>
+    <lightning-card title="VisionsDream Cloud - Employee Management"
+                    icon-name="standard:people">
+        <div class="slds-p-around_medium">
+
+            <div class="header-section">
+                <h2 class="slds-text-heading_medium">
+                    Employee Directory
+                </h2>
+                <p>Manage employee information in one place.</p>
+            </div>
+
+            <div class="slds-m-vertical_medium">
+                <lightning-button
+                    label="Add Employee"
+                    variant="brand"
+                    onclick={handleNewEmployee}>
+                </lightning-button>
+            </div>
+
+            <lightning-datatable
+                key-field="Id"
+                data={employees}
+                columns={columns}
+                onrowaction={handleRowAction}
+                is-loading={isLoading}
+                hide-checkbox-column>
+            </lightning-datatable>
+
+            <template lwc:if={showModal}>
+                <section role="dialog"
+                         tabindex="-1"
+                         aria-modal="true"
+                         aria-labelledby="modal-heading"
+                         class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+
+                        <header class="slds-modal__header">
+                            <lightning-button-icon
+                                icon-name="utility:close"
+                                alternative-text="Close"
+                                onclick={closeModal}
+                                class="slds-modal__close">
+                            </lightning-button-icon>
+
+                            <h2 id="modal-heading"
+                                class="slds-text-heading_medium">
+                                {modalTitle}
+                            </h2>
+                        </header>
+
+                        <div class="slds-modal__content slds-p-around_medium">
+
+                            <template lwc:if={isViewMode}>
+                                <lightning-record-view-form
+                                    record-id={selectedEmployeeId}
+                                    object-api-name="Employee1__c">
+
+                                    <lightning-output-field
+                                        field-name="Employee_Number__c">
+                                    </lightning-output-field>
+
+                                    <lightning-output-field
+                                        field-name="Name">
+                                    </lightning-output-field>
+
+                                    <lightning-output-field
+                                        field-name="Email__c">
+                                    </lightning-output-field>
+
+                                    <lightning-output-field
+                                        field-name="Department__c">
+                                    </lightning-output-field>
+
+                                    <lightning-output-field
+                                        field-name="Designation__c">
+                                    </lightning-output-field>
+
+                                </lightning-record-view-form>
+                            </template>
+
+                            <template lwc:else>
+                                <lightning-record-edit-form
+                                    object-api-name="Employee1__c"
+                                    record-id={selectedEmployeeId}
+                                    onsuccess={handleSuccess}
+                                    onerror={handleError}>
+
+                                    <lightning-messages>
+                                    </lightning-messages>
+
+                                    <lightning-input-field
+                                        field-name="Name"
+                                        required>
+                                    </lightning-input-field>
+
+                                    <lightning-input-field
+                                        field-name="Email__c">
+                                    </lightning-input-field>
+
+                                    <lightning-input-field
+                                        field-name="Department__c">
+                                    </lightning-input-field>
+
+                                    <lightning-input-field
+                                        field-name="Designation__c">
+                                    </lightning-input-field>
+
+                                    <div class="slds-m-top_medium">
+                                        <lightning-button
+                                            label="Cancel"
+                                            onclick={closeModal}>
+                                        </lightning-button>
+
+                                        <lightning-button
+                                            class="slds-m-left_small"
+                                            type="submit"
+                                            label="Save Employee"
+                                            variant="brand">
+                                        </lightning-button>
+                                    </div>
+
+                                </lightning-record-edit-form>
+                            </template>
+                        </div>
+
+                        <template lwc:if={isViewMode}>
+                            <footer class="slds-modal__footer">
+                                <lightning-button
+                                    label="Close"
+                                    onclick={closeModal}>
+                                </lightning-button>
+                            </footer>
+                        </template>
+
+                    </div>
+                </section>
+
+                <div class="slds-backdrop slds-backdrop_open">
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
+
