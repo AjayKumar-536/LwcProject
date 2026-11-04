@@ -58,24 +58,24 @@ const ROOMS = [
 const GUESTS = [
   {
     id: "G01",
-    name: "Ananya Rao",
-    email: "ananya@example.com",
+    name: "Radha Rani",
+    email: "radha@gmail.com",
     phone: "+91 9876543210",
     visits: 4,
     tier: "Gold"
   },
   {
     id: "G02",
-    name: "Rahul Varma",
-    email: "rahul@example.com",
+    name: "Krishna",
+    email: "krishna@gmail.com",
     phone: "+91 9876543211",
     visits: 2,
     tier: "Silver"
   },
   {
     id: "G03",
-    name: "Meera Shah",
-    email: "meera@example.com",
+    name: "Bala Rama",
+    email: "balarama@gmail.com",
     phone: "+91 9876543212",
     visits: 7,
     tier: "Platinum"
@@ -84,7 +84,7 @@ const GUESTS = [
 const BOOKINGS = [
   {
     id: "BK-2401",
-    guest: "Ananya Rao",
+    guest: "Radha Rani",
     room: "101",
     checkIn: "2026-11-03",
     checkOut: "2026-11-05",
@@ -93,7 +93,7 @@ const BOOKINGS = [
   },
   {
     id: "BK-2402",
-    guest: "Rahul Varma",
+    guest: "Krishna",
     room: "102",
     checkIn: "2026-11-03",
     checkOut: "2026-11-04",
@@ -102,7 +102,7 @@ const BOOKINGS = [
   },
   {
     id: "BK-2403",
-    guest: "Meera Shah",
+    guest: "Bala Rama",
     room: "201",
     checkIn: "2026-11-04",
     checkOut: "2026-11-07",
