@@ -1,0 +1,3 @@
+import { LightningElement } from 'lwc';import getOrders from '@salesforce/apex/VisionzCommerceController.getOrders';
+const COLUMNS=[{label:'Order',fieldName:'Name'},{label:'Date',fieldName:'Order_Date__c',type:'date'},{label:'Status',fieldName:'Order_Status__c'},{label:'Total (INR)',fieldName:'Total_Amount__c',type:'currency'}];
+export default class VisionzOrderList extends LightningElement {columns=COLUMNS;customerEmail='demo.customer1@example.com';orders=[];errorMessage;handleEmail(e){this.customerEmail=e.target.value;}async loadOrders(){try{this.orders=await getOrders({customerEmail:this.customerEmail});this.errorMessage=undefined;}catch(e){this.errorMessage=e.body?.message||e.message;}}}

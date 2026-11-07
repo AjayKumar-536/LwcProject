@@ -1,0 +1,10 @@
+<template><lightning-card title="Demo Cart" icon-name="standard:shopping_cart">
+        <div class="slds-p-around_medium"><lightning-input type="email" label="Customer email" value={customerEmail}
+                onchange={handleEmail}></lightning-input><lightning-button class="slds-m-top_small" label="Load cart"
+                onclick={loadCart}></lightning-button><template if:true={items.length}><template for:each={items}
+                    for:item="item">
+                    <p key={item.Id}>{item.Product__r.Name} √ó {item.Quantity__c} ‚Äî {item.Unit_Price__c}</p>
+                </template></template><template if:true={errorMessage}>
+                <p class="slds-text-color_error">{errorMessage}</p>
+            </template></div>
+    </lightning-card></template>

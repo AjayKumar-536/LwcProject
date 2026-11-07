@@ -1,0 +1,14 @@
+<template><lightning-card title="Visionz Dream Cloud" icon-name="standard:store">
+        <div class="toolbar"><lightning-input type="search" label="Search" variant="label-hidden"
+                placeholder="Search products" value={searchKey}
+                onchange={handleSearch}></lightning-input><lightning-combobox label="Category" variant="label-hidden"
+                value={selectedCategory} options={categoryOptions} onchange={handleCategory}></lightning-combobox></div>
+        <template if:true={errorMessage}>
+            <p class="slds-p-around_medium slds-text-color_error">{errorMessage}</p>
+        </template>
+        <div class="product-grid"><template for:each={filteredProducts} for:item="product"><c-visionz-product-card
+                    key={product.Id} product={product}
+                    onaddtocart={handleAddToCart}></c-visionz-product-card></template></div>
+        <div class="slds-p-around_medium"><lightning-button label="Refresh catalog"
+                onclick={refreshCatalog}></lightning-button></div>
+    </lightning-card></template>

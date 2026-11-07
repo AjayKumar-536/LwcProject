@@ -1,0 +1,1 @@
+VisionzSampleDataSeeder.seed();

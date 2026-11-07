@@ -1,0 +1,2 @@
+import { LightningElement } from 'lwc';import getCart from '@salesforce/apex/VisionzCommerceController.getCart';
+export default class VisionzCartPanel extends LightningElement {customerEmail='demo.customer1@example.com';items=[];errorMessage;handleEmail(e){this.customerEmail=e.target.value;}async loadCart(){try{this.items=await getCart({customerEmail:this.customerEmail});this.errorMessage=undefined;}catch(e){this.errorMessage=e.body?.message||e.message;}}}

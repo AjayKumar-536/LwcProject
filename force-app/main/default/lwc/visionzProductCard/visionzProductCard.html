@@ -1,0 +1,11 @@
+<template>
+    <article class="product-card"><img src={imageUrl} alt={product.Name} />
+        <div class="content">
+            <p class="category">{product.Category__r.Name}</p>
+            <h2>{product.Name}</h2>
+            <p>{product.Description__c}</p>
+            <div class="bottom"><strong>{formattedPrice}</strong><lightning-button label="Add to cart" variant="brand"
+                    onclick={addToCart}></lightning-button></div><small>Stock: {product.Stock_Quantity__c}</small>
+        </div>
+    </article>
+</template>
