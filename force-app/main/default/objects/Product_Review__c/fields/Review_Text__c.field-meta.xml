@@ -1,0 +1,7 @@
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+<fullName>Review_Text__c</fullName>
+<label>Review Text</label>
+<type>LongTextArea</type>
+<length>2000</length>
+<visibleLines>4</visibleLines>
+</CustomField>

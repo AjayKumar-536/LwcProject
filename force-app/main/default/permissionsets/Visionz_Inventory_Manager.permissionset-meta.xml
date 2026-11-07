@@ -1,0 +1,30 @@
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+<label>Visionz Inventory Manager</label>
+<objectPermissions>
+<allowCreate>false</allowCreate>
+<allowDelete>false</allowDelete>
+<allowEdit>false</allowEdit>
+<allowRead>true</allowRead>
+<modifyAllRecords>false</modifyAllRecords>
+<object>Category__c</object>
+<viewAllRecords>false</viewAllRecords>
+</objectPermissions>
+<objectPermissions>
+<allowCreate>true</allowCreate>
+<allowDelete>true</allowDelete>
+<allowEdit>true</allowEdit>
+<allowRead>true</allowRead>
+<modifyAllRecords>false</modifyAllRecords>
+<object>Product__c</object>
+<viewAllRecords>false</viewAllRecords>
+</objectPermissions>
+<objectPermissions>
+<allowCreate>false</allowCreate>
+<allowDelete>false</allowDelete>
+<allowEdit>true</allowEdit>
+<allowRead>true</allowRead>
+<modifyAllRecords>false</modifyAllRecords>
+<object>Product_Review__c</object>
+<viewAllRecords>false</viewAllRecords>
+</objectPermissions>
+</PermissionSet>

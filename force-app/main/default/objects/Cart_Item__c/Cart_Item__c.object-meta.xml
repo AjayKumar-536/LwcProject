@@ -1,0 +1,12 @@
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+<deploymentStatus>Deployed</deploymentStatus>
+<description>Cart Item for Visionz Dream Cloud.</description>
+<label>Cart Item</label>
+<nameField>
+<displayFormat>CAR-{0000}</displayFormat>
+<label>Cart Item Number</label>
+<type>AutoNumber</type>
+</nameField>
+<pluralLabel>Cart Items</pluralLabel>
+<sharingModel>Private</sharingModel>
+</CustomObject>

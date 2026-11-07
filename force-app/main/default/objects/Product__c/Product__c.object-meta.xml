@@ -1,0 +1,11 @@
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+<deploymentStatus>Deployed</deploymentStatus>
+<description>Product for Visionz Dream Cloud.</description>
+<nameField>
+<label>Product Name</label>
+<type>Text</type>
+<length>80</length>
+</nameField>
+<pluralLabel>Products</pluralLabel>
+<sharingModel>Read</sharingModel>
+</CustomObject>

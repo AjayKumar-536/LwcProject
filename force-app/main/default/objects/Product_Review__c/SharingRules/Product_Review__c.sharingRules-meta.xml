@@ -1,0 +1,15 @@
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+<sharingCriteriaRules>
+<fullName>Approved_Reviews_Read</fullName>
+<accessLevel>Read</accessLevel>
+<label>Approved Reviews Read Access</label>
+<sharedTo>
+<allInternalUsers>true</allInternalUsers>
+</sharedTo>
+<criteriaItems>
+<field>Is_Approved__c</field>
+<operation>equals</operation>
+<value>true</value>
+</criteriaItems>
+</sharingCriteriaRules>
+</SharingRules>

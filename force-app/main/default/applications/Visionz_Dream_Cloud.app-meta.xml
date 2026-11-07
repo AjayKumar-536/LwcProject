@@ -1,0 +1,13 @@
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+<formFactors>Large</formFactors>
+<label>Visionz Dream Cloud</label>
+<navType>Standard</navType>
+<tabs>standard-home</tabs>
+<tabs>Category__c</tabs>
+<tabs>Product__c</tabs>
+<tabs>Cart_Item__c</tabs>
+<tabs>Order__c</tabs>
+<tabs>Customer_Address__c</tabs>
+<tabs>Product_Review__c</tabs>
+<uiType>Lightning</uiType>
+</CustomApplication>

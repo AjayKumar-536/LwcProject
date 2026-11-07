@@ -1,0 +1,11 @@
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+<deploymentStatus>Deployed</deploymentStatus>
+<description>Order Item for Visionz Dream Cloud.</description>
+<nameField>
+<displayFormat>ORD-{0000}</displayFormat>
+<label>Order Item Number</label>
+<type>AutoNumber</type>
+</nameField>
+<pluralLabel>Order Items</pluralLabel>
+<sharingModel>ControlledByParent</sharingModel>
+</CustomObject>
