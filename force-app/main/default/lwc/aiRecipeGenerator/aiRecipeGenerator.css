@@ -1,0 +1,88 @@
+:host {
+    display: block;
+    --recipe-ink: #20312b;
+    --recipe-muted: #65736d;
+    --recipe-green: #28634c;
+    --recipe-cream: #fbf8f1;
+}
+.hero {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    color: #fff;
+    background: linear-gradient(120deg, #244f3e, #71916a);
+}
+.hero h1 {
+    max-width: 42rem;
+    margin: .35rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.hero p { color: #f2f6ef; }
+.eyebrow {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+.form-panel, .content-card, .recipe-panel {
+    border: 1px solid #e6e8e2;
+    border-radius: .85rem;
+    background: #fff;
+}
+.section-title, .content-card h3 {
+    color: var(--recipe-ink);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: .9rem;
+}
+.recipe-panel { padding: 1.25rem; background: var(--recipe-cream); }
+.recipe-heading { display: flex; justify-content: space-between; gap: 1rem; }
+.recipe-heading h2 { color: var(--recipe-ink); font-size: 1.65rem; font-weight: 700; }
+.recipe-heading p { color: var(--recipe-muted); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .7rem;
+}
+.stat {
+    padding: .85rem;
+    border-radius: .7rem;
+    background: #fff;
+    border: 1px solid #e8e9e2;
+}
+.stat span, .nutrition-grid span {
+    display: block;
+    color: var(--recipe-muted);
+    font-size: .75rem;
+}
+.stat strong { display: block; color: var(--recipe-green); font-size: 1.05rem; }
+.content-card { padding: 1rem; }
+.ingredient-list, .tips-list { padding-left: 1.2rem; }
+.ingredient-list li, .tips-list li { margin: .55rem 0; color: var(--recipe-ink); }
+.note, .fine-print { color: var(--recipe-muted); font-size: .75rem; }
+.instruction-list { list-style: none; padding: 0; }
+.instruction-list li { display: flex; gap: .75rem; margin: .85rem 0; line-height: 1.5; }
+.step-number {
+    display: inline-flex;
+    flex: 0 0 1.65rem;
+    width: 1.65rem;
+    height: 1.65rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--recipe-green);
+    font-weight: 700;
+}
+.nutrition-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+.nutrition-grid strong { display: block; color: var(--recipe-green); }
+.error-panel {
+    padding: .85rem 1rem;
+    border-left: 4px solid #ba0517;
+    border-radius: .3rem;
+    background: #fff1f0;
+    color: #8e030f;
+}
+@media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero h1 { font-size: 1.4rem; }
+}

@@ -1,0 +1,134 @@
+<template>
+    <lightning-card title="AI Recipe Studio" icon-name="utility:food_and_drink">
+        <div class="slds-p-around_medium">
+            <div class="hero slds-m-bottom_large">
+                <p class="eyebrow">YOUR PERSONAL AI CHEF</p>
+                <h1>Turn your ingredients into something delicious.</h1>
+                <p>Tell us what you have. Let Einstein help create your next meal.</p>
+            </div>
+
+            <div class="form-panel slds-p-around_medium slds-m-bottom_large">
+                <h2 class="section-title">Create your recipe</h2>
+                <lightning-textarea
+                    label="Available ingredients"
+                    value={ingredients}
+                    onchange={handleIngredientsChange}
+                    placeholder="Example: tomatoes, onion, rice, spinach, garlic"
+                    max-length="1500"
+                    required>
+                </lightning-textarea>
+
+                <div class="slds-grid slds-wrap slds-gutters_small slds-m-top_small">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-combobox label="Cuisine" value={cuisine}
+                            options={cuisineOptions} onchange={handleCuisineChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-combobox label="Meal type" value={mealType}
+                            options={mealOptions} onchange={handleMealChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-combobox label="Dietary preference" value={dietaryPreference}
+                            options={dietOptions} onchange={handleDietChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-combobox label="Servings" value={servings}
+                            options={servingOptions} onchange={handleServingsChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+                <div class="slds-m-top_large">
+                    <lightning-button variant="brand" label="Generate my recipe"
+                        icon-name="utility:sparkles" onclick={handleGenerate}
+                        disabled={isGenerateDisabled}>
+                    </lightning-button>
+                    <template if:true={isLoading}>
+                        <lightning-spinner alternative-text="Generating recipe" size="small"></lightning-spinner>
+                    </template>
+                </div>
+            </div>
+
+            <template if:true={errorMessage}>
+                <div class="error-panel slds-m-bottom_large" role="alert">{errorMessage}</div>
+            </template>
+
+            <template if:true={recipe}>
+                <section class="recipe-panel">
+                    <div class="recipe-heading">
+                        <div>
+                            <p class="eyebrow">YOUR AI-GENERATED RECIPE</p>
+                            <h2>{recipe.title}</h2>
+                            <p>{recipe.description}</p>
+                        </div>
+                        <lightning-button-icon icon-name="utility:refresh" alternative-text="Create another recipe"
+                            title="Create another recipe" onclick={handleReset}>
+                        </lightning-button-icon>
+                    </div>
+
+                    <div class="stats-grid slds-m-vertical_large">
+                        <div class="stat"><span>Prep time</span><strong>{prepTimeLabel}</strong></div>
+                        <div class="stat"><span>Cook time</span><strong>{cookTimeLabel}</strong></div>
+                        <div class="stat"><span>Servings</span><strong>{recipe.servings}</strong></div>
+                        <div class="stat"><span>Difficulty</span><strong>{recipe.difficulty}</strong></div>
+                    </div>
+
+                    <div class="slds-grid slds-wrap slds-gutters">
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_5-of-12">
+                            <div class="content-card">
+                                <h3>Ingredients</h3>
+                                <ul class="ingredient-list">
+                                    <template for:each={recipe.ingredients} for:item="item">
+                                        <li key={item.name}>
+                                            <strong>{item.quantity}</strong> {item.name}
+                                            <template if:true={item.note}><span class="note"> ‚Äî {item.note}</span></template>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                            <template if:true={recipe.nutrition}>
+                                <div class="content-card slds-m-top_medium">
+                                    <h3>Estimated nutrition / serving</h3>
+                                    <div class="nutrition-grid">
+                                        <div><strong>{recipe.nutrition.calories}</strong><span>kcal</span></div>
+                                        <div><strong>{recipe.nutrition.proteinGrams}g</strong><span>Protein</span></div>
+                                        <div><strong>{recipe.nutrition.carbsGrams}g</strong><span>Carbs</span></div>
+                                        <div><strong>{recipe.nutrition.fatGrams}g</strong><span>Fat</span></div>
+                                    </div>
+                                    <p class="fine-print">AI-generated estimates; actual values vary by ingredients and portions.</p>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_7-of-12">
+                            <div class="content-card">
+                                <h3>Cooking instructions</h3>
+                                <ol class="instruction-list">
+                                    <template for:each={numberedInstructions} for:item="step">
+                                        <li key={step.id}>
+                                            <span class="step-number">{step.number}</span>
+                                            <span>{step.text}</span>
+                                        </li>
+                                    </template>
+                                </ol>
+                            </div>
+                            <div class="content-card slds-m-top_medium">
+                                <h3>Chef's tips</h3>
+                                <ul class="tips-list">
+                                    <template for:each={recipe.chefTips} for:item="tip">
+                                        <li key={tip}>{tip}</li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fine-print slds-m-top_medium">
+                        Generated recipes are suggestions. Check ingredients for allergens and follow safe food-handling practices.
+                    </p>
+                </section>
+            </template>
+        </div>
+    </lightning-card>
+</template>
