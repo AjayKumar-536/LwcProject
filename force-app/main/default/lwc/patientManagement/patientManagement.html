@@ -1,0 +1,36 @@
+<template>
+  <lightning-card title="Patient Management" icon-name="standard:contact">
+    <div class="slds-p-around_medium">
+      <div class="slds-grid slds-gutters slds-wrap slds-m-bottom_small">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
+          <lightning-input type="search" label="Search patients" value={searchKey}
+            onchange={handleSearch} placeholder="Name, email or phone"></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-align-bottom">
+          <lightning-button variant="brand" label="New Patient" onclick={openNew}></lightning-button>
+        </div>
+      </div>
+      <lightning-datatable key-field="Id" data={patients} columns={columns}
+        onrowaction={handleRowAction} hide-checkbox-column></lightning-datatable>
+    </div>
+  </lightning-card>
+  <template if:true={showForm}>
+    <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header"><h2 class="slds-text-heading_medium">Patient Details</h2></header>
+        <div class="slds-modal__content slds-p-around_medium">
+          <lightning-input label="Patient Name" data-field="Name" value={draft.Name} onchange={handleField} required></lightning-input>
+          <lightning-input label="Email" type="email" data-field="Email__c" value={draft.Email__c} onchange={handleField}></lightning-input>
+          <lightning-input label="Phone" type="tel" data-field="Phone__c" value={draft.Phone__c} onchange={handleField}></lightning-input>
+          <lightning-combobox label="Gender" data-field="Gender__c" value={draft.Gender__c} options={genderOptions} onchange={handleField}></lightning-combobox>
+          <lightning-combobox label="Blood Group" data-field="Blood_Group__c" value={draft.Blood_Group__c} options={bloodOptions} onchange={handleField}></lightning-combobox>
+          <lightning-input label="Date of Birth" type="date" data-field="Date_of_Birth__c" value={draft.Date_of_Birth__c} onchange={handleField}></lightning-input>
+        </div>
+        <footer class="slds-modal__footer">
+          <lightning-button label="Cancel" onclick={closeForm}></lightning-button>
+          <lightning-button class="slds-m-left_small" variant="brand" label="Save" onclick={save}></lightning-button>
+        </footer>
+      </div>
+    </section><div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

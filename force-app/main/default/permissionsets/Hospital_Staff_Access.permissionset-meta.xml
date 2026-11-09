@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+  <label>Hospital Staff Access</label>
+  <description>Starter object access for Hospital Management demo.</description>
+  <hasActivationRequired>false</hasActivationRequired>
+</PermissionSet>

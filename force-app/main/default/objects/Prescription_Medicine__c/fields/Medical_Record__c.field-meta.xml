@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Medical_Record__c</fullName><label>Medical Record</label><type>MasterDetail</type>
+  <referenceTo>Medical_Record__c</referenceTo><relationshipLabel>Prescription Medicine Medical Record</relationshipLabel>
+  <relationshipName>Prescription_Medicine_Medical_Record</relationshipName>
+  <deleteConstraint>Cascade</deleteConstraint>
+</CustomField>

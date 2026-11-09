@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Medicine__c</fullName><label>Medicine</label><type>Lookup</type>
+  <referenceTo>Medicine__c</referenceTo><relationshipLabel>Prescription Medicine Medicine</relationshipLabel>
+  <relationshipName>Prescription_Medicine_Medicine</relationshipName>
+  <deleteConstraint>Restrict</deleteConstraint>
+</CustomField>

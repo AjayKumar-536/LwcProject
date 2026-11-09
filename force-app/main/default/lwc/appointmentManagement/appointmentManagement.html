@@ -1,0 +1,8 @@
+<template>
+  <lightning-card title="Appointments" icon-name="standard:event">
+    <div class="slds-p-around_medium">
+      <lightning-datatable key-field="Id" data={appointments} columns={columns}
+        onrowaction={handleAction} hide-checkbox-column></lightning-datatable>
+    </div>
+  </lightning-card>
+</template>

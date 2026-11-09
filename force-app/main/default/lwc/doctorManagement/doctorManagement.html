@@ -1,0 +1,8 @@
+<template>
+  <lightning-card title="Doctor Directory" icon-name="standard:service_appointment">
+    <div class="slds-p-around_medium">
+      <lightning-input type="search" label="Search doctors" value={searchKey} onchange={handleSearch}></lightning-input>
+      <lightning-datatable class="slds-m-top_small" key-field="Id" data={doctors} columns={columns} hide-checkbox-column></lightning-datatable>
+    </div>
+  </lightning-card>
+</template>

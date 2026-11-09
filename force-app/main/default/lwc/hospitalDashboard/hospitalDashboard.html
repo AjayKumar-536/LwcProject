@@ -1,0 +1,20 @@
+<template>
+  <lightning-card title="Hospital Management Dashboard" icon-name="standard:dashboard">
+    <div class="slds-p-around_medium">
+      <template if:true={data}>
+        <div class="slds-grid slds-wrap slds-gutters">
+          <template for:each={tiles} for:item="tile">
+            <div key={tile.label} class="slds-col slds-size_1-of-2 slds-large-size_1-of-5 slds-m-bottom_small">
+              <article class="tile">
+                <p class="slds-text-title_caps">{tile.label}</p>
+                <p class="slds-text-heading_large">{tile.value}</p>
+              </article>
+            </div>
+          </template>
+        </div>
+      </template>
+      <template if:true={error}><div class="slds-text-color_error">{errorMessage}</div></template>
+      <lightning-button label="Refresh" onclick={refresh} class="slds-m-top_small"></lightning-button>
+    </div>
+  </lightning-card>
+</template>

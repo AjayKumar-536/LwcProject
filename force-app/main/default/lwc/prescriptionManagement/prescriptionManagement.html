@@ -1,0 +1,9 @@
+<template>
+  <lightning-card title="Prescription Items" icon-name="standard:product">
+    <div class="slds-p-around_medium">
+      <lightning-input label="Medical Record ID" value={medicalRecordId} onchange={handleId}></lightning-input>
+      <lightning-button class="slds-m-top_small" label="Load Prescription" variant="brand" onclick={load}></lightning-button>
+      <lightning-datatable class="slds-m-top_small" key-field="Id" data={items} columns={columns} hide-checkbox-column></lightning-datatable>
+    </div>
+  </lightning-card>
+</template>

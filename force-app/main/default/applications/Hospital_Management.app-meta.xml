@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+  <label>Hospital Management</label>
+  <description>Hospital Management LWC application</description>
+  <formFactors>Large</formFactors><formFactors>Small</formFactors>
+  <navType>Standard</navType><uiType>Lightning</uiType>
+  <tabs>standard-home</tabs><tabs>Patient__c</tabs><tabs>Doctor__c</tabs>
+  <tabs>Department__c</tabs><tabs>Appointment__c</tabs><tabs>Medicine__c</tabs><tabs>Bills__c</tabs>
+</CustomApplication>
