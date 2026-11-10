@@ -3,6 +3,6 @@
   <deploymentStatus>Deployed</deploymentStatus>
   <label>Prescription Medicine</label>
   <pluralLabel>Prescription Medicines</pluralLabel>
-  <sharingModel>ReadWrite</sharingModel>
+  <sharingModel>ControlledByParent</sharingModel>
   <nameField><displayFormat>PM-{00000}</displayFormat><label>Prescription Medicine Number</label><type>AutoNumber</type></nameField>
 </CustomObject>

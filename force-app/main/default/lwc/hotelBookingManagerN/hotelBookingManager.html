@@ -1,0 +1,1 @@
+<template><lightning-input type="search" label="Search sample bookings" onchange={change}></lightning-input><template for:each={visible} for:item="b"><div key={b.id} class="row"><div><b>{b.guest}</b><p>{b.room} · {b.date}</p></div><span>{b.status}</span></div></template><small>Sample data only; no reservation is created.</small></template>

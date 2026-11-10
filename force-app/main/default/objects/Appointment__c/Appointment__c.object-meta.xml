@@ -3,6 +3,6 @@
   <deploymentStatus>Deployed</deploymentStatus>
   <label>Appointment</label>
   <pluralLabel>Appointments</pluralLabel>
-  <sharingModel>ReadWrite</sharingModel>
+  <sharingModel>ControlledByParent</sharingModel>
   <nameField><displayFormat>APT-{00000}</displayFormat><label>Appointment Number</label><type>AutoNumber</type></nameField>
 </CustomObject>

@@ -3,6 +3,6 @@
   <deploymentStatus>Deployed</deploymentStatus>
   <label>Medical Record</label>
   <pluralLabel>Medical Records</pluralLabel>
-  <sharingModel>ReadWrite</sharingModel>
+  <sharingModel>ControlledByParent</sharingModel>
   <nameField><displayFormat>REC-{00000}</displayFormat><label>Medical Record Number</label><type>AutoNumber</type></nameField>
 </CustomObject>

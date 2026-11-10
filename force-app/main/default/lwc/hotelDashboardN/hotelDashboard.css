@@ -1,0 +1,1 @@
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}article{background:white;border:1px solid #e3e9f0;border-radius:.7rem;padding:1rem}p,small{color:#64748b}strong{display:block;font-size:1.6rem;color:#17365d}@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}

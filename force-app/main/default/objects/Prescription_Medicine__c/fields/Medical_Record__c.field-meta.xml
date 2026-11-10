@@ -3,5 +3,4 @@
   <fullName>Medical_Record__c</fullName><label>Medical Record</label><type>MasterDetail</type>
   <referenceTo>Medical_Record__c</referenceTo><relationshipLabel>Prescription Medicine Medical Record</relationshipLabel>
   <relationshipName>Prescription_Medicine_Medical_Record</relationshipName>
-  <deleteConstraint>Cascade</deleteConstraint>
 </CustomField>

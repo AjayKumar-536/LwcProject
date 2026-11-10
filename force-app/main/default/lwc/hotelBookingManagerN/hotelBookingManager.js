@@ -1,0 +1,2 @@
+import { LightningElement } from 'lwc';
+export default class HotelBookingManager extends LightningElement { term = ''; bookings = [{ id: '1', guest: 'Aarav Sharma', room: 'Deluxe Room', date: 'Sample date', status: 'Confirmed' }, { id: '2', guest: 'Maya Rao', room: 'Standard Room', date: 'Sample date', status: 'Pending' }]; change(e) { this.term = e.target.value.toLowerCase(); } get visible() { return this.bookings.filter(x => (x.guest + x.room + x.status).toLowerCase().includes(this.term)); } }
