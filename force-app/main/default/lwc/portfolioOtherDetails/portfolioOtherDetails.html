@@ -1,0 +1,44 @@
+<template>
+    <h2 class="slds-var-m-bottom_medium">Awards</h2>
+    <lightning-layout multiple-rows>
+        <template for:each={awards} for:item="award">
+            <lightning-layout-item key={award} size="12" small-device-size="6" medium-device-size="4" large-device-size="3"
+            padding="around-small">
+                <div class="other-box">
+                    <img src={awardIcon} alt={award}/>
+                    <span>{award}</span>
+                </div>
+            </lightning-layout-item>
+        </template>
+        
+    </lightning-layout>
+
+
+    <h2 class="slds-var-m-bottom_medium">Superbadges</h2>
+    <lightning-layout multiple-rows>
+        <template for:each={superbadges} for:item="badge">
+            <lightning-layout-item key={badge} size="12" small-device-size="6" medium-device-size="4" large-device-size="3"
+            padding="around-small">
+                <div class="other-box">
+                    <img src={badgeIcon} alt={badge}/>
+                    <span>{badge}</span>
+                </div>
+            </lightning-layout-item>
+        </template>
+        
+    </lightning-layout>
+
+    <h2 class="slds-var-m-bottom_medium">Languages</h2>
+    <lightning-layout multiple-rows>
+        <template for:each={languages} for:item="lang">
+            <lightning-layout-item key={lang} size="12" small-device-size="6" medium-device-size="4" large-device-size="3"
+            padding="around-small">
+                <div class="other-box">
+                    <img src={languageIcon} alt={lang}/>
+                    <span>{lang}</span>
+                </div>
+            </lightning-layout-item>
+        </template>
+        
+    </lightning-layout>
+</template>

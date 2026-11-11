@@ -1,13 +1,20 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire, api } from 'lwc';
 import PortfolioAssets from '@salesforce/resourceUrl/PortfolioAssets'
-export default class PortfolioBanner extends LightningElement {
+ import {getRecord, getFieldValue} from 'lightning/uiRecordApi'
+import FULLNAME from '@salesforce/schema/Portfolio__c.FullName__c'
+import COMPANY_LOCATION from '@salesforce/schema/Portfolio__c.CompanyLocation__c'
+import COMPANY_NAME from '@salesforce/schema/Portfolio__c.CompanyName__c'
+import DESIGNATION from '@salesforce/schema/Portfolio__c.Designation__c'
 
-    linkedinUrl = 'https://www.linkedin.com/in/nikhilkarkra'
-    twitterUrl = 'https://twitter.com/karkra_nikhil'
-    githubUrl = 'https://github.com/karkranikhil'
-    youtubeUrl = 'https://youtube.com/salesforcetroop'
-    trailheadUrl = 'https://trailblazer.me/id/bkarkra'
-    blogUrl = 'https://www.salesforcetroop.com/'
+
+export default class PortfolioBanner extends LightningElement {
+    @api recordId //= 'a0Pbm000009ql2TEAQ'
+    @api linkedinUrl //= 'https://www.linkedin.com/in/ajay-kumar-sakhapuram/'
+    @api twitterUrl //= 'https://x.com/AjayKumar5362'
+    @api githubUrl //= 'https://github.com/AjayKumar-536'
+    @api youtubeUrl //= 'https://www.youtube.com/@AjayTheAchiever'
+    @api trailheadUrl //= 'https://trailblazer.me/id/bkarkra'
+    @api blogUrl //= 'https://ajay-dev-ed.develop.my.site.com/portfolioofajay'
 
 
     userPic = `${PortfolioAssets}/PortfolioAssets/userPic.jpeg`
@@ -17,5 +24,30 @@ export default class PortfolioBanner extends LightningElement {
     twitter = `${PortfolioAssets}/PortfolioAssets/Social/twitter.svg`
     trailhead = `${PortfolioAssets}/PortfolioAssets/Social/trailhead1.svg`
     blog = `${PortfolioAssets}/PortfolioAssets/Social/blogger.svg`
+
+    
+    @wire(getRecord, {recordId:'$recordId', fields:[FULLNAME,COMPANY_LOCATION,COMPANY_NAME,DESIGNATION]})
+    portfolioData
+    // portfolioHandler({data, error}){
+    //     if(data){
+    //         console.log("record Data", JSON.stringify(data))
+    //     }
+    //     if(error){
+    //         console.error("error", error)
+    //     }
+    // }
+
+    get fullName(){
+        return getFieldValue(this.portfolioData.data, FULLNAME)
+    }
+    get companyLocation(){
+        return getFieldValue(this.portfolioData.data, COMPANY_LOCATION)
+    }
+    get companyName(){
+        return getFieldValue(this.portfolioData.data, COMPANY_NAME)
+    }
+    get designation(){
+        return getFieldValue(this.portfolioData.data, DESIGNATION)
+    }
 
 }

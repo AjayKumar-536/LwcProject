@@ -1,0 +1,19 @@
+h3{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+}
+p{
+    font-size: 32px;
+    font-weight: 700;
+    color: #f6c403;
+}
+img{
+    height: 100px;
+}
+
+@media (max-width:720px) {
+    img{
+        margin-top: 16px;
+    }
+}
